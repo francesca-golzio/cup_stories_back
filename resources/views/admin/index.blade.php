@@ -1,7 +1,62 @@
-@extends('layouts.app') 
+@extends('layouts.admin') 
 
 @section('content')
-<h3 class="p-4">
-  Ciao <b>{{ $user->name }}</b>, sei nella dashboard di amministrazione
-</h3>
+
+<h4 class="p-4">
+  Welcome <b>{{ $user->name }}</b> ! 
+</h4>
+
+<div class="container d-flex flex-wrap gap-5">
+  <div class="card" style="width: 200px; aspect-ratio: 3/2;">
+    <div class="card-body">
+      <div class="h3">Short Stories</div>
+      <div>
+        <a href="#">lista</a>
+      </div>
+      <div>
+        <a href="#">nuovo</a>
+      </div>
+      </div>
+    </div>
+  <div class="card" style="width: 200px; aspect-ratio: 3/2;">
+    <div class="card-body">
+      <div class="h3">Issues</div>
+      <div>
+        <a href="#">lista</a>
+      </div>
+      <div>
+        <a href="#">nuovo</a>
+      </div>
+      </div>
+    </div>
+  <div class="card" style="width: 200px; aspect-ratio: 3/2;">
+    <div class="card-body">
+      <div class="h3">Authors</div>
+      <div>
+        <a href="#">lista</a>
+      </div>
+      <div>
+        <a href="#">nuovo</a>
+      </div>
+      </div>
+    </div>
+  <div class="card" style="width: 200px; aspect-ratio: 3/2;">
+    <div class="card-body">
+      <div class="h3">Tags</div>
+      <div>
+        <a href="#">lista</a>
+      </div>
+      <div>
+        <a href="#">nuovo</a>
+      </div>
+      </div>
+    </div>
+</div>
+
+
+    
+
+
+
+
 @endsection
