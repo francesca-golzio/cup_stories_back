@@ -61,7 +61,7 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <span class="dropdown-header">Admin</span>
                                 <a class="dropdown-item" href="{{ route('admin.index') }}">Admin Dashboard</a>
-                                <a class="dropdown-item" href="#">Short Stories</a>
+                                <a class="dropdown-item" href="{{ url('admin/stories') }}">Short Stories</a>
                                 <a class="dropdown-item" href="#">Issues</a>
                                 <a class="dropdown-item" href="#">Authors</a>
                                 <a class="dropdown-item" href="#">Tags</a>

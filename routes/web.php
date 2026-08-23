@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Stories\StoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,6 +25,9 @@ Route::middleware(['auth', 'verified'])
     ->group( function () {
         
         Route::get('/', [DashboardController::class, 'index'])->name('index');
+        
+        /* Stories */
+        Route::get('stories', [StoryController::class, 'index'])->name('stories');
 
     });
 
