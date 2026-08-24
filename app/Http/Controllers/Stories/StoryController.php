@@ -59,17 +59,28 @@ class StoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Story $story)
     {
-        //
+        return view('admin.stories.edit', compact('story'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Story $story)
     {
-        //
+        $data = $request->all();
+
+        $story->title = $data['title'];
+        $story->content = $data['content'];
+        $story->cover_img = $data['cover_img'];
+        $story->slug = Str::slug($data['title'], '-');
+
+        //dd($story);
+
+        $story->update();
+
+        return redirect()->route('admin.stories.show', $story);
     }
 
     /**

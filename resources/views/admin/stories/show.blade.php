@@ -20,7 +20,7 @@
         </div>
 
         <div class="col-md-2 d-flex flex-column gap-3 my-3">
-          <div><a href="#" class="btn btn-primary">edit</a></div>
+          <div><a href="{{ route('admin.stories.edit', $story) }}" class="btn btn-warning">edit</a></div>
           <div><a href="#" class="btn btn-danger">delete</a></div>
         </div>
 

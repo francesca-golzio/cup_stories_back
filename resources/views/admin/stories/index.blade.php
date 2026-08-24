@@ -21,8 +21,8 @@
         <td scope="row">{{ $story->title }}</td>
         <td>story author</td>
         <td>issue</td>
-        <td><a href="{{ route('admin.stories.show', $story->id) }}" class="btn btn-primary">show</a></td>
-        <td><a href="#" class="btn btn-primary">edit</a></td>
+        <td><a href="{{ route('admin.stories.show', $story) }}" class="btn btn-primary">show</a></td>
+        <td><a href="{{ route('admin.stories.edit', $story) }}" class="btn btn-warning">edit</a></td>
         <td><a href="#" class="btn btn-danger">delete</a></td>
       </tr>
       @endforeach
