@@ -21,7 +21,7 @@
 
         <div class="col-md-2 d-flex flex-column gap-3 my-3">
           <div><a href="{{ route('admin.stories.edit', $story) }}" class="btn btn-warning">edit</a></div>
-          <div><a href="#" class="btn btn-danger">delete</a></div>
+          <div><x-delete_button :entity="$story" entityType="story"/></div>
         </div>
 
       </div>
@@ -29,5 +29,7 @@
     
 </div>
 
+<!-- Modal -->
+<x-delete_button_modal :entity="$story" entityType="story" tableName="stories" />
 
 @endsection

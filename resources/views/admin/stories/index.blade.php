@@ -23,7 +23,7 @@
         <td>issue</td>
         <td><a href="{{ route('admin.stories.show', $story) }}" class="btn btn-info">show</a></td>
         <td><a href="{{ route('admin.stories.edit', $story) }}" class="btn btn-warning">edit</a></td>
-        <td><a href="#" class="btn btn-danger">delete</a></td>
+        <td><x-delete_button :entity="$story" entityType="story"/></td>
       </tr>
       @endforeach
 
@@ -31,6 +31,9 @@
   </table>
 </div>
 
-
+<!-- Modal -->
+@foreach ($stories as $story)
+<x-delete_button_modal :entity="$story" entityType="story" tableName="stories" />
+@endforeach
 
 @endsection
