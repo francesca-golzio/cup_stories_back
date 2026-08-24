@@ -11,7 +11,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Caution:<br>once you delete this {{ $entityType }}, you wan't be able to recover it.
+        Caution:<br>once you delete <b>{{ 
+          $entity->surname ? $entity->surname . ' ' . $entity->name
+          : ($entity->name ? $entity->name 
+          : ($entity->title ? $entity->title 
+          : ($entity->name ?? 'this ' . $entityType))) 
+        }}</b>, you wan't be able to recover it.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Abort</button>
