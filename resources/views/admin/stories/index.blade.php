@@ -4,9 +4,9 @@
 
 <div class="table-responsive my-4">
   
-  <a href="{{ route('admin.stories.create') }}" class="btn btn-primary mb-3">Add a Short Story</a>
+  <a href="{{ route('admin.stories.create') }}" class="btn btn-success mb-3">Add a Short Story</a>
 
-  <table class="table table-primary table-striped">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">title</th>
@@ -21,7 +21,7 @@
         <td scope="row">{{ $story->title }}</td>
         <td>story author</td>
         <td>issue</td>
-        <td><a href="{{ route('admin.stories.show', $story) }}" class="btn btn-primary">show</a></td>
+        <td><a href="{{ route('admin.stories.show', $story) }}" class="btn btn-info">show</a></td>
         <td><a href="{{ route('admin.stories.edit', $story) }}" class="btn btn-warning">edit</a></td>
         <td><a href="#" class="btn btn-danger">delete</a></td>
       </tr>
