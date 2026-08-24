@@ -14,7 +14,7 @@
         <a href="{{ route('admin.stories.index') }}">lista</a>
       </div>
       <div>
-        <a href="#">nuovo</a>
+        <a href="{{ route('admin.stories.create') }}">nuovo</a>
       </div>
       </div>
     </div>

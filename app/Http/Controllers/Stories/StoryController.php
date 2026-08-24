@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Stories;
 use App\Http\Controllers\Controller;
 use App\Models\Story;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class StoryController extends Controller
 {
@@ -23,7 +24,7 @@ class StoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.stories.create');
     }
 
     /**
@@ -31,7 +32,20 @@ class StoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newPost = new Story();
+
+        $newPost->title = $data['title'];
+        $newPost->content = $data['content'];
+        $newPost->cover_img = $data['cover_img'];
+        $newPost->slug = Str::slug($data['title'], '-');
+
+        //dd($newPost);
+
+        $newPost->save();
+
+        return redirect()->route('admin.stories.show', $newPost->id);
     }
 
     /**
