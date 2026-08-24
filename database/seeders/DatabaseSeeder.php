@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(AuthorsTableSeeder::class);
+
         $this->call(StoriesTableSeeder::class);
 
         /* Develop Admin Test User */

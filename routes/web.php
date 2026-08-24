@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Stories\AuthorController;
 use App\Http\Controllers\Stories\StoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,8 +29,10 @@ Route::middleware(['auth', 'verified'])
         
         /* Stories */
         Route::resource('stories', StoryController::class);
-
         // Route::get('stories', [StoryController::class, 'index'])->name('stories');
+
+        /* Authors */
+        Route::resource('authors', AuthorController::class);
 
     });
 
