@@ -11,7 +11,7 @@
     <div class="card-body">
       <div class="h3">Short Stories</div>
       <div>
-        <a href="{{ url('admin/stories') }}">lista</a>
+        <a href="{{ route('admin.stories.index') }}">lista</a>
       </div>
       <div>
         <a href="#">nuovo</a>

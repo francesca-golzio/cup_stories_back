@@ -36,7 +36,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/') }}">{{ __('Admin Dashboard') }}</a>
+                            <a class="nav-link" href="{{route('admin.index') }}">{{ __('Admin Dashboard') }}</a>
                         </li>
                     </ul>
 
@@ -61,12 +61,12 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <span class="dropdown-header">Admin</span>
                                 <a class="dropdown-item" href="{{ route('admin.index') }}">Admin Dashboard</a>
-                                <a class="dropdown-item" href="{{ url('admin/stories') }}">Short Stories</a>
+                                <a class="dropdown-item" href="{{ route('admin.stories.index') }}">Short Stories</a>
                                 <a class="dropdown-item" href="#">Issues</a>
                                 <a class="dropdown-item" href="#">Authors</a>
                                 <a class="dropdown-item" href="#">Tags</a>
                                 <span class="dropdown-header">Personal Profile</span>
-                                <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
+                                <a class="dropdown-item" href="{{ route('profile.edit') }}">{{__('Profile')}}</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
