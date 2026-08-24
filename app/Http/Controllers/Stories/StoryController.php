@@ -37,9 +37,9 @@ class StoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Story $story)
     {
-        //
+        return view('admin.stories.show', compact('story'));
     }
 
     /**

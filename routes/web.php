@@ -27,8 +27,11 @@ Route::middleware(['auth', 'verified'])
         Route::get('/', [DashboardController::class, 'index'])->name('index');
         
         /* Stories */
-        Route::get('stories', [StoryController::class, 'index'])->name('stories');
+        Route::resource('stories', StoryController::class);
+
+        // Route::get('stories', [StoryController::class, 'index'])->name('stories');
 
     });
+
 
 require __DIR__.'/auth.php';
