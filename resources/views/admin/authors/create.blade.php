@@ -21,7 +21,7 @@
 
     <div class="form-group my-3 text-bg-success p-2 rounded">
       <label for="bio">About <small class="text-muted">~ max 450 characters</small></label>
-      <input type="text" class="form-control" name="bio" id="bio">
+      <textarea type="text" class="form-control" name="bio" id="bio"></textarea>
     </div>
 
     <div class="form-group my-3 text-bg-success p-2 rounded">
