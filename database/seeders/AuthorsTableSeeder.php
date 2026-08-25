@@ -21,8 +21,8 @@ class AuthorsTableSeeder extends Seeder
 
             $newAuthor->name = $faker->firstName();
             $newAuthor->surname = $faker->lastName();
-            $newAuthor->photo = url('https://i.pravatar.cc/200?img=' . $faker->numberBetween(1, 12));
-            $newAuthor->bio = $faker->text(1000);
+            $newAuthor->photo = url('https://i.pravatar.cc/200?img=' . ($i + 10));
+            $newAuthor->bio = $faker->text(450);
             $newAuthor->slug = Str::slug($newAuthor->name . ' ' . $newAuthor->surname, '-') ;
 
             $newAuthor->save();
