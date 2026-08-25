@@ -4,7 +4,7 @@
 
 <div class="container my-4">
 
-    <div class="card author_card my-3 bg-success p-2 rounded" >
+    <div class="card author_card my-3 bg-info p-2 rounded" >
       <div class="row bg-light p-3">
 
         <div class="col-md-4">
@@ -15,10 +15,10 @@
 
           <h2 class="card-title">{{ $author->name . ' ' . $author->surname }}</h2>
 
-          <div class="rounded bg-success-subtle">
+          <div class="rounded bg-info-subtle">
             <div class="card-body rounded">
               <h5 class="card-subtitle text-body-secondary mb-3">Short Stories:</h5>          
-              <table class="table table-success table-striped">
+              <table class="table table-info table-striped">
                 <thead class="d-none">
                   <tr>
                     <th scope="col"></th>
