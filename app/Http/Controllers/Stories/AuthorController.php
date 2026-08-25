@@ -59,17 +59,29 @@ class AuthorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Author $author)
     {
-        //
+        return view('admin.authors.edit', compact('author'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Author $author)
     {
-        //
+        $data = $request->all();
+
+        $author->name = $data['name'];
+        $author->surname = $data['surname'];
+        $author->bio = $data['bio'];
+        $author->photo = $data['photo'];
+        $author->slug = Str::slug($data['name'] . ' ' . $data['surname'], '-');
+
+        //dd($author);
+
+        $author->update();
+
+        return redirect()->route('admin.authors.show', $author);
     }
 
     /**
