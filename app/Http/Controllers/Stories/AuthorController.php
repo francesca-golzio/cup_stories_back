@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Stories;
 use App\Http\Controllers\Controller;
 use App\Models\Author;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AuthorController extends Controller
 {
@@ -23,7 +24,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.authors.create');
     }
 
     /**
@@ -31,7 +32,20 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newAuthor = new Author();
+        $newAuthor->name = $data['name'];
+        $newAuthor->surname = $data['surname'];
+        $newAuthor->bio = $data['bio'];
+        $newAuthor->photo = $data['photo'];
+        $newAuthor->slug = Str::slug($data['name'] . ' ' . $data['surname'], '-');
+
+        //dd($newAuthor);
+
+        $newAuthor->save();
+
+        return redirect()->route('admin.authors.show', $newAuthor);
     }
 
     /**
