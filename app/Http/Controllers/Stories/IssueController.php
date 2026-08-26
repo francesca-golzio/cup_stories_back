@@ -37,9 +37,9 @@ class IssueController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Issue $issue)
     {
-        //
+        return view('admin.issues.show', compact('issue'));
     }
 
     /**
