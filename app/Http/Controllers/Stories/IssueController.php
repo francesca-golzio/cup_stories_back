@@ -60,17 +60,51 @@ class IssueController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Issue $issue)
     {
-        //
+        return view('admin.issues.edit', compact('issue'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Issue $issue)
     {
-        //
+        $data = $request->all();
+
+        $issue->title = $data['title'];
+        $issue->color = $data['color'];
+        $issue->cover_img = $data['cover_img'];
+        $issue->slug = Str::slug($data['title'], '-');
+        
+        /* set $issue->status */
+        if ($data['set_status'] == 'save_draft') {
+            $issue->status = 'draft';
+
+        } else if ($data['set_status'] == 'unpublish') {
+            $issue->status = 'draft';
+            $issue->published_at = null;
+
+        } else {
+            $issue->status = 'published';
+    
+            if (!$issue->published_at) {
+                $issue->published_at = now();
+            }
+
+            if (!$issue->pubblication_number) {
+
+                $lastIssue = Issue::orderBy('pubblication_number', 'desc')->first();
+
+                $issue->pubblication_number = $lastIssue->pubblication_number + 1;
+            }
+        }
+
+        //dd($issue);
+
+        $issue->update();
+
+        return redirect()->route('admin.issues.show', $issue);
     }
 
     /**
