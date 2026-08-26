@@ -62,7 +62,7 @@
                                 <span class="dropdown-header">Admin</span>
                                 <a class="dropdown-item" href="{{ route('admin.index') }}">Admin Dashboard</a>
                                 <a class="dropdown-item" href="{{ route('admin.stories.index') }}">Short Stories</a>
-                                <a class="dropdown-item" href="#">Issues</a>
+                                <a class="dropdown-item" href="{{ route('admin.issues.index') }}">Issues</a>
                                 <a class="dropdown-item" href="{{ route('admin.authors.index') }}">Authors</a>
                                 <a class="dropdown-item" href="#">Tags</a>
                                 <span class="dropdown-header">Personal Profile</span>

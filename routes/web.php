@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Stories\AuthorController;
+use App\Http\Controllers\Stories\IssueController;
 use App\Http\Controllers\Stories\StoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,9 @@ Route::middleware(['auth', 'verified'])
 
         /* Authors */
         Route::resource('authors', AuthorController::class);
+
+        /* Issues */
+        Route::resource('issues', IssueController::class);
 
     });
 
