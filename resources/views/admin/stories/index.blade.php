@@ -10,8 +10,8 @@
     <thead>
       <tr>
         <th scope="col">title</th>
-        <th scope="col">authors</th>
-        <th scope="col">issues</th>
+        <th scope="col">author</th>
+        <th scope="col">issue</th>
         <th scope="col" colspan="3">actions</th>
       </tr>
     </thead>
@@ -19,7 +19,7 @@
       @foreach ($stories as $story)
       <tr class="">
         <td scope="row">{{ $story->title }}</td>
-        <td>story author</td>
+        <td>{{ $story->author->name . ' ' . $story->author->surname }}</td>
         <td>issue</td>
         <td><a href="{{ route('admin.stories.show', $story) }}" class="btn btn-info">show</a></td>
         <td><a href="{{ route('admin.stories.edit', $story) }}" class="btn btn-warning">edit</a></td>

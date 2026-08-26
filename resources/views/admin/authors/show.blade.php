@@ -15,25 +15,17 @@
 
           <h2 class="card-title">{{ $author->name . ' ' . $author->surname }}</h2>
 
-          <div class="rounded bg-info-subtle">
+          <div class="rounded">
             <div class="card-body rounded">
               <h5 class="card-subtitle text-body-secondary mb-3">Short Stories:</h5>          
-              <table class="table table-info table-striped">
-                <thead class="d-none">
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- da ciclare -->
-                  <tr class="">
-                    <td scope="row"><h5>titolo racconto</h5></td>
-                    <td>issue</td>
-                  </tr>
-                  <!-- da ciclare -->
-                </tbody>
-              </table>
+                <ul>
+                  @foreach ($author->stories as $story)                   
+                    <li scope="row" class=" d-flex gap-3">
+                      <h5>{{ $story->title }}</h5>
+                      <span class="text-muted">issue</span>
+                    </li>
+                  @endforeach
+                </ul>
               <div class="card-footer rounded mt-3">
                 <h5 class="card-subtitle text-body-secondary">About</h5>
                 <p class="card-text">{{ $author->bio }}</p>

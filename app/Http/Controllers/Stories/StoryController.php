@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Stories;
 
 use App\Http\Controllers\Controller;
+use App\Models\Author;
 use App\Models\Story;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -24,7 +25,9 @@ class StoryController extends Controller
      */
     public function create()
     {
-        return view('admin.stories.create');
+        $authors = Author::all();
+
+        return view('admin.stories.create', compact('authors'));
     }
 
     /**
@@ -34,18 +37,19 @@ class StoryController extends Controller
     {
         $data = $request->all();
 
-        $newPost = new Story();
+        $newStory = new Story();
 
-        $newPost->title = $data['title'];
-        $newPost->content = $data['content'];
-        $newPost->cover_img = $data['cover_img'];
-        $newPost->slug = Str::slug($data['title'], '-');
+        $newStory->title = $data['title'];
+        $newStory->author_id = $data['author_id']; 
+        $newStory->content = $data['content'];
+        $newStory->cover_img = $data['cover_img'];
+        $newStory->slug = Str::slug($data['title'], '-');
 
-        //dd($newPost);
+        //dd($newStory);
 
-        $newPost->save();
+        $newStory->save();
 
-        return redirect()->route('admin.stories.show', $newPost->id);
+        return redirect()->route('admin.stories.show', $newStory->id);
     }
 
     /**
@@ -61,7 +65,9 @@ class StoryController extends Controller
      */
     public function edit(Story $story)
     {
-        return view('admin.stories.edit', compact('story'));
+        $authors = Author::all();
+
+        return view('admin.stories.edit', compact('story', 'authors'));
     }
 
     /**
@@ -72,6 +78,7 @@ class StoryController extends Controller
         $data = $request->all();
 
         $story->title = $data['title'];
+        $story->author_id = $data['author_id']; 
         $story->content = $data['content'];
         $story->cover_img = $data['cover_img'];
         $story->slug = Str::slug($data['title'], '-');

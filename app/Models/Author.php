@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Author extends Model
 {
-    //
+    public function stories()
+    {
+        return $this->hasMany(Story::class);
+    }
 }

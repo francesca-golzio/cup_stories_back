@@ -14,8 +14,11 @@
         <div class="col-md-6">
           <div class="card-body">
             <h4 class="card-title">{{ $story->title }}</h4>
-            <h6 class="card-subtitle text-body-secondary">author</h6>
-            <p class="card-text">{{ $story->content }}</p>
+            <h6 class="card-subtitle text-body-secondary">
+              <small class="text-muted">by</small>
+              {{ $story->author->name . ' ' . $story->author->surname }}
+            </h6>
+            <p class="card-text mt-3">{{ $story->content }}</p>
           </div>
         </div>
 

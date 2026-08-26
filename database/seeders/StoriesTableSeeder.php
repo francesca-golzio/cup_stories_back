@@ -23,6 +23,7 @@ class StoriesTableSeeder extends Seeder
             $newStory->content = $faker->paragraphs(3, true);
             $newStory->cover_img = url('https://picsum.photos/200');
             $newStory->slug = Str::slug($newStory->title, '-');
+            $newStory->author_id = rand(1, 7);
 
             $newStory->save();
         
