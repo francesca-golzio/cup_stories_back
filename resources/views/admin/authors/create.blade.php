@@ -4,7 +4,7 @@
 
 <div class="container my-3">
   
-  <h4>Add a new Short Story</h4>
+  <h4>Add a new Author</h4>
 
   <form action="{{ route('admin.authors.store') }}" method="POST">
   @csrf
