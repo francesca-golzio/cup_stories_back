@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Stories;
 use App\Http\Controllers\Controller;
 use App\Models\Issue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class IssueController extends Controller
 {
@@ -23,7 +24,7 @@ class IssueController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.issues.create');
     }
 
     /**
@@ -31,7 +32,21 @@ class IssueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newIssue = new Issue();
+
+        $newIssue->title = $data['title'];
+        $newIssue->status = 'draft';
+        $newIssue->color = $data['color'];
+        $newIssue->cover_img = $data['cover_img'];
+        $newIssue->slug = Str::slug($data['title'], '-');
+
+        //dd($newIssue);
+
+        $newIssue->save();
+
+        return redirect()->route('admin.issues.show', $newIssue);
     }
 
     /**
