@@ -80,18 +80,22 @@ class IssueController extends Controller
         /* set $issue->status */
         if ($data['set_status'] == 'save_draft') {
             $issue->status = 'draft';
+            
+            } else if ($data['set_status'] == 'unpublish') {
+                $issue->status = 'draft';
 
-        } else if ($data['set_status'] == 'unpublish') {
-            $issue->status = 'draft';
-            $issue->published_at = null;
-
-        } else {
-            $issue->status = 'published';
-    
+                /* set $issue->published_at */
+                $issue->published_at = null;
+                
+                } else {
+                    $issue->status = 'published';
+                    
+            /* set $issue->published_at */
             if (!$issue->published_at) {
                 $issue->published_at = now();
             }
 
+            /* set $issue->pubblication_number */
             if (!$issue->pubblication_number) {
 
                 $lastIssue = Issue::orderBy('pubblication_number', 'desc')->first();
@@ -110,8 +114,10 @@ class IssueController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Issue $issue)
     {
-        //
+        $issue->delete();
+
+        return redirect()->route('admin.issues.index');
     }
 }
