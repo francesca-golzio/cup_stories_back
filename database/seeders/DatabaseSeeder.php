@@ -14,17 +14,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        //$this->call(AuthorsTableSeeder::class);
+        $this->call(
+            [
+                AuthorsTableSeeder::class,
 
-        $this->call(IssuesTableSeeder::class);
+                IssuesTableSeeder::class,
+                
+                StoriesTableSeeder::class,
+            ]
+        );
 
-        //$this->call(StoriesTableSeeder::class);
 
         /* Develop Admin Test User */
-       /*  User::factory()->create([
+        User::factory()->create([
             'name' => 'oggi',
             'email' => 'oggi@mail.com',
             'password' => Env::get('PASSWORD'),
-        ]); */
+        ]);
     }
 }
