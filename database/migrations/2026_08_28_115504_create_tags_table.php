@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('name', 50);
-            $table->string('label', 20);
+            $table->string('label', 20)->nullable();
             $table->text('description')->default('- missing -');
 
             $table->timestamps();

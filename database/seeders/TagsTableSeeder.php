@@ -18,11 +18,11 @@ class TagsTableSeeder extends Seeder
         //@dd($sampleTags);
 
         foreach ($sampleTags as $tag) {
-
+            
             $newTag = new Tag();
 
             $newTag->name = $tag['name'];
-            $newTag->label = $tag['label'];
+            $newTag->label = $tag['label'] ?? $tag['name'];
             $newTag->description = $tag['description'];
 
             $newTag->save();
