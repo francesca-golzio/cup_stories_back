@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Stories\AuthorController;
 use App\Http\Controllers\Stories\IssueController;
 use App\Http\Controllers\Stories\StoryController;
+use App\Http\Controllers\Stories\TagController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,6 +38,9 @@ Route::middleware(['auth', 'verified'])
 
         /* Issues */
         Route::resource('issues', IssueController::class);
+
+        /* Tags */
+        Route::resource('tags', TagController::class);
 
     });
 

@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             [
                 AuthorsTableSeeder::class,
 
+                TagsTableSeeder::class,
+
                 IssuesTableSeeder::class,
                 
                 StoriesTableSeeder::class,

@@ -35,7 +35,7 @@
   <div class="card bg-secondary-subtle p-2" style="width: 200px; aspect-ratio: 3/2;">
     <div class="h3 text-center">Tags</div>
     <div class="card-body bg-light rounded d-flex justify-content-between">
-      <a href="#" class="btn btn-info m-1">lista</a>
+      <a href="{{ route('admin.tags.index') }}" class="btn btn-info m-1">lista</a>
       <a href="#" class="btn btn-success m-1">nuovo</a>
     </div>
   </div>
