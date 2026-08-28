@@ -16,6 +16,25 @@
     </div>
     
     <div class="form-group my-3 text-bg-warning p-2 rounded">
+      <label for="color">Short Stories</label>
+      @foreach ($availableStories as $story)
+      <div class="form-check">
+        <input 
+          class="form-check-input" 
+          type="checkbox" 
+          name="updatedStories[]"
+          value="{{ $story['id'] }}" 
+          id="story-{{ $story['slug'] }}" 
+          {{ $story['issue_id'] == $issue->id ? 'checked' : '' }}>
+        <label class="form-check-label" for="story-{{ $story['slug'] }}">
+          {{ $story['title'] }}&nbsp;&nbsp;
+          <small class="text-muted">[&nbsp;by {{ $story->author->name . ' ' . $story->author->surname }}&nbsp;]</small>
+        </label>
+      </div>
+        @endforeach
+    </div>
+    
+    <div class="form-group my-3 text-bg-warning p-2 rounded">
       <label for="color">Color</label>
       <input type="color" class="form-control form-control-color" name="color" id="color" value="{{ $issue->color }}">
     </div>

@@ -10,4 +10,8 @@ class Story extends Model
     {
         return $this->belongsTo(Author::class);
     }
+    public function issue()
+    {
+        return $this->belongsTo(Issue::class);
+    }
 }

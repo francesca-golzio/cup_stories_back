@@ -23,6 +23,17 @@
         </div>
 
         <div class="col-md-2 d-flex flex-column gap-3 my-3">
+          @if ($story->issue->pubblication_number === 0)
+          {{ $story->issue->status }} unassigned
+          @else ($story->issue->pubblication_number !== 0)
+          {{ $story->issue->status }} on Issue n° {{ $story->issue->pubblication_number }}<br>{{ $story->issue->title }}
+          @endif
+        
+          @if ($story->issue->status == 'published')
+          <div>
+            {{ $story->issue->pubblished_at ? $story->issue->pubblished_at->format('m-Y') : '' }}
+          </div>          
+          @endif
           <div><a href="{{ route('admin.stories.edit', $story) }}" class="btn btn-warning">edit</a></div>
           <div><x-delete_button :entity="$story" entityType="story"/></div>
         </div>

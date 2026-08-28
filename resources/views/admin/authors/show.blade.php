@@ -21,8 +21,16 @@
                 <ul>
                   @foreach ($author->stories as $story)                   
                     <li scope="row" class=" d-flex gap-3">
-                      <h5>{{ $story->title }}</h5>
-                      <span class="text-muted">issue</span>
+                      <h5>
+                        <a href="{{ route('admin.stories.show', $story) }}">
+                          {{ $story->title }}
+                        </a>
+                      </h5>                      
+                      <a href="{{ route('admin.stories.show', $story) }}">
+                        <span class="text-muted">
+                          issue {{ $story->issue->pubblication_number }}
+                        </span>
+                      </a>
                     </li>
                   @endforeach
                 </ul>

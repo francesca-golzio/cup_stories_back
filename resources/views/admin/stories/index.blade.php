@@ -20,7 +20,7 @@
       <tr class="">
         <td scope="row">{{ $story->title }}</td>
         <td>{{ $story->author->name . ' ' . $story->author->surname }}</td>
-        <td>issue</td>
+        <td>{{ $story->issue->pubblication_number !== 0 ? $story->issue->pubblication_number : '' }}</td>
         <td><a href="{{ route('admin.stories.show', $story) }}" class="btn btn-info">show</a></td>
         <td><a href="{{ route('admin.stories.edit', $story) }}" class="btn btn-warning">edit</a></td>
         <td><x-delete_button :entity="$story" entityType="story"/></td>

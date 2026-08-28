@@ -25,6 +25,11 @@ class StoriesTableSeeder extends Seeder
             $newStory->slug = Str::slug($newStory->title, '-');
             $newStory->author_id = rand(1, 7);
 
+            /* assign some stories to the sample published issue */
+            if($i % 3 == 0) {
+                $newStory->issue_id = 2;
+            }
+
             $newStory->save();
         
         }

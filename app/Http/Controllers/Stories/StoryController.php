@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Stories;
 
 use App\Http\Controllers\Controller;
 use App\Models\Author;
+use App\Models\Issue;
 use App\Models\Story;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -26,8 +27,9 @@ class StoryController extends Controller
     public function create()
     {
         $authors = Author::all();
+        $issues = Issue::all();
 
-        return view('admin.stories.create', compact('authors'));
+        return view('admin.stories.create', compact('authors', 'issues'));
     }
 
     /**
@@ -66,8 +68,9 @@ class StoryController extends Controller
     public function edit(Story $story)
     {
         $authors = Author::all();
+        $issues = Issue::all();
 
-        return view('admin.stories.edit', compact('story', 'authors'));
+        return view('admin.stories.edit', compact('story', 'authors', 'issues'));
     }
 
     /**
@@ -82,6 +85,7 @@ class StoryController extends Controller
         $story->content = $data['content'];
         $story->cover_img = $data['cover_img'];
         $story->slug = Str::slug($data['title'], '-');
+        $story->issue_id = $data['issue_id'];
 
         //dd($story);
 

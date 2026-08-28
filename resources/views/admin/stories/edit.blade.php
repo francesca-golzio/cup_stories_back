@@ -19,14 +19,33 @@
       <label for="author_id">Author</label>
       <select class="form-select" aria-label="Default select example" name="author_id" id="author_id">
         @foreach ($authors as $author)
-          <option value="{{ $author->id }}" {{ $story->author_id == $author->id ? 'selected' : '' }}>{{ $author->name . ' ' . $author->surname }}</option>
+          <option value="{{ $author->id }}" {{ $story->author_id == $author->id ? 'selected' : '' }}>
+            {{ $author->name . ' ' . $author->surname }}
+          </option>
+        @endforeach
+      </select>
+    </div>
+
+    <div class="form-group my-3 text-bg-warning p-2 rounded">
+      <label for="issue_id">issue</label>
+      <select class="form-select" aria-label="Default select example" name="issue_id" id="issue_id">
+        @foreach ($issues as $issue)
+          <option value="{{ $issue->id }}" {{ $story->issue_id == $issue->id ? 'selected' : '' }}>
+            @if ($issue->pubblication_number === 0)
+              NA - {{ $issue->title }}
+            @elseif (!$issue->pubblication_number)
+              [draft] - {{ $issue->title }}
+            @else
+              {{ $issue->pubblication_number }} - {{ $issue->title }}
+            @endif
+          </option>
         @endforeach
       </select>
     </div>
 
     <div class="form-group my-3 text-bg-warning p-2 rounded">
       <label for="content">Content</label>
-      <textarea class="form-control" name="content" id="content" rows="8">{{ $story->content }}</textarea>
+      <textarea class="form-control" name="content" id="content" rows="6">{{ $story->content }}</textarea>
     </div>
 
     <div class="form-group my-3 text-bg-warning p-2 rounded">

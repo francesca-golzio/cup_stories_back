@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Stories;
 
 use App\Http\Controllers\Controller;
 use App\Models\Issue;
+use App\Models\Story;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class IssueController extends Controller
@@ -15,7 +17,7 @@ class IssueController extends Controller
     public function index()
     {
         $issues = Issue::all();
-
+        
         return view('admin.issues.index', compact('issues'));
     }
 
@@ -54,7 +56,9 @@ class IssueController extends Controller
      */
     public function show(Issue $issue)
     {
-        return view('admin.issues.show', compact('issue'));
+        $stories = Story::where('issue_id', $issue->id)->get();
+
+        return view('admin.issues.show', compact('issue', 'stories'));
     }
 
     /**
@@ -62,7 +66,14 @@ class IssueController extends Controller
      */
     public function edit(Issue $issue)
     {
-        return view('admin.issues.edit', compact('issue'));
+        $unassignedStories = Story::where('issue_id', 1)->get();
+        $myStories = Story::where('issue_id', $issue->id)->get();
+        $availableStories = [];
+
+        $availableStories = $myStories->merge($unassignedStories);
+        //dd($availableStories);
+        
+        return view('admin.issues.edit', compact('issue', 'availableStories'));
     }
 
     /**
@@ -107,6 +118,8 @@ class IssueController extends Controller
         //dd($issue);
 
         $issue->update();
+
+        $issue->syncStories($data['updatedStories']);
 
         return redirect()->route('admin.issues.show', $issue);
     }
