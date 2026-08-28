@@ -64,7 +64,7 @@
                                 <a class="dropdown-item" href="{{ route('admin.stories.index') }}">Short Stories</a>
                                 <a class="dropdown-item" href="{{ route('admin.issues.index') }}">Issues</a>
                                 <a class="dropdown-item" href="{{ route('admin.authors.index') }}">Authors</a>
-                                <a class="dropdown-item" href="#">Tags</a>
+                                <a class="dropdown-item" href="{{ route('admin.tags.index') }}">Tags</a>
                                 <span class="dropdown-header">Personal Profile</span>
                                 <a class="dropdown-item" href="{{ route('profile.edit') }}">{{__('Profile')}}</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
