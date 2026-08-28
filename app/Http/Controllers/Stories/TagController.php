@@ -38,7 +38,7 @@ class TagController extends Controller
         $newTag = new Tag();
 
         $newTag->name = $data['name'];
-        $newTag->label = $data['label'];
+        $newTag->label = $data['label'] ?? $data['name'];
         $newTag->description = $data['description'] ?? '- missing -';
 
         //dd($newTag);
@@ -59,17 +59,25 @@ class TagController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Tag $tag)
     {
-        //
+        return view('admin.tags.edit', compact('tag'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Tag $tag)
     {
-        //
+        $data = $request->all();
+
+        $tag->name = $data['name'];
+        $tag->label = $data['label'] ?? $data['name'];
+        $tag->description = $data['description'] ?? '- missing -';
+
+        $tag->save();
+
+        return redirect()->route('admin.tags.show', $tag);
     }
 
     /**
