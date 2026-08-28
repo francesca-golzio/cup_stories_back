@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Stories;
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TagController extends Controller
 {
@@ -23,7 +24,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tags.create');
     }
 
     /**
@@ -31,7 +32,20 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        //dd($data);
+
+        $newTag = new Tag();
+
+        $newTag->name = $data['name'];
+        $newTag->label = $data['label'];
+        $newTag->description = $data['description'] ?? '- missing -';
+
+        //dd($newTag);
+
+        $newTag->save();
+
+        return redirect()->route('admin.tags.show', $newTag);
     }
 
     /**
