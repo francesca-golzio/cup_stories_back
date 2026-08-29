@@ -83,8 +83,10 @@ class TagController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+
+        return redirect()->route('admin.tags.index');
     }
 }
