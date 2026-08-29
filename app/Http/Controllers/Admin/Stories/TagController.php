@@ -38,8 +38,9 @@ class TagController extends Controller
         $newTag = new Tag();
 
         $newTag->name = $data['name'];
-        $newTag->label = $data['label'] ?? $data['name'];
+        $newTag->label = $data['label'] ? Str::slug($data['label'], '_') : Str::slug($data['name'], '_');
         $newTag->description = $data['description'] ?? '- missing -';
+        $newTag->slug = Str::slug($data['name']);
 
         //dd($newTag);
 
