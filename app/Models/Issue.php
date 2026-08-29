@@ -14,7 +14,7 @@ class Issue extends Model
 
         $this->stories()
             ->whereNotIn('id', $updatedStories)
-            ->update(['issue_id' => null]);
+            ->update(['issue_id' => 1]);
 
         Story::whereIn('id', $updatedStories)
             ->update(['issue_id' => $this->id]);
