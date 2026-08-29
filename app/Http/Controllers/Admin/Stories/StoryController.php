@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Author;
 use App\Models\Issue;
 use App\Models\Story;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -28,8 +29,9 @@ class StoryController extends Controller
     {
         $authors = Author::all();
         $issues = Issue::all();
+        $tags = Tag::all();
 
-        return view('admin.stories.create', compact('authors', 'issues'));
+        return view('admin.stories.create', compact('authors', 'issues', 'tags'));
     }
 
     /**
@@ -51,6 +53,10 @@ class StoryController extends Controller
 
         $newStory->save();
 
+        if ($request->has('tags')) {
+            $newStory->tags()->attach($data['tags']);
+        }
+
         return redirect()->route('admin.stories.show', $newStory->id);
     }
 
@@ -69,8 +75,9 @@ class StoryController extends Controller
     {
         $authors = Author::all();
         $issues = Issue::all();
+        $tags = Tag::all();
 
-        return view('admin.stories.edit', compact('story', 'authors', 'issues'));
+        return view('admin.stories.edit', compact('story', 'authors', 'issues', 'tags'));
     }
 
     /**
@@ -91,6 +98,12 @@ class StoryController extends Controller
 
         $story->update();
 
+        if ($request->has('tags')) {
+            $story->tags()->sync($data['tags']);
+        } else {
+            $story->tags()->detach();
+        }
+
         return redirect()->route('admin.stories.show', $story);
     }
 
@@ -99,6 +112,8 @@ class StoryController extends Controller
      */
     public function destroy(Story $story)
     {
+        $story->tags()->detach();
+        
         $story->delete();
 
         return redirect()->route('admin.stories.index');

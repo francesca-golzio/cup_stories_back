@@ -23,15 +23,28 @@
             <div class="card-body rounded">
               <h5 class="card-subtitle text-body-secondary my-2">Short Stories:</h5>          
                 <ul>
-                  <!-- da ciclare -->                  
+                  @foreach ($tag->stories as $story)
                   <li>
-                    <a href="#">title</a>
-                    &nbsp;&nbsp;
-                    <a href="#" class="text-muted">author</a>
-                    &nbsp;&nbsp;
-                    <a href="#" class="text-muted">issue</a>
+
+                    <a href="{{ route('admin.stories.show', $story) }}">{{ $story->title }}</a>&nbsp;&nbsp;
+                    
+                    <span class="text-muted">
+                      <small>by</small> 
+                      <a href="{{ route('admin.authors.show', $story->author) }}">
+                        {{ $story->author->name . ' ' . $story->author->surname }}
+                      </a>
+                    </span>&nbsp;&nbsp;
+                    
+                    @if ($story->issue->pubblication_number !== 0)
+                    <span class="text-muted" title="{{ $story->issue->title }}">
+                      <a href="{{ route('admin.issues.show', $story->issue) }}">
+                        (&nbsp;Issue n° {{ $story->issue->pubblication_number }}&nbsp;)
+                      </a>
+                    </span>
+                    @endif
+
                   </li>
-                  <!-- da ciclare -->                  
+                  @endforeach                  
                 </ul>
 
             </div>

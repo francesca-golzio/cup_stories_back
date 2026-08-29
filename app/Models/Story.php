@@ -14,4 +14,9 @@ class Story extends Model
     {
         return $this->belongsTo(Issue::class);
     }
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
 }

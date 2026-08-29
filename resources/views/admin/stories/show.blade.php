@@ -23,6 +23,19 @@
         </div>
 
         <div class="col-md-2 d-flex flex-column gap-3 my-3">
+
+          @if ($story->tags->count() > 0)
+          <div>            
+            @foreach ($story->tags as $tag)
+            <a href="{{ route('admin.tags.show', $tag) }}">
+              <small class="border border-secondary rounded px-1 mx-1">
+                {{ $tag->label }}
+              </small>
+            </a>
+            @endforeach
+          </div>
+          @endif
+          
           @if ($story->issue->pubblication_number === 0)
           {{ $story->issue->status }} unassigned
           @else ($story->issue->pubblication_number !== 0)
@@ -34,8 +47,10 @@
             {{ $story->issue->pubblished_at ? $story->issue->pubblished_at->format('m-Y') : '' }}
           </div>          
           @endif
+
           <div><a href="{{ route('admin.stories.edit', $story) }}" class="btn btn-warning">edit</a></div>
           <div><x-delete_button :entity="$story" entityType="story"/></div>
+          
         </div>
 
       </div>

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Story;
+use App\Models\Tag;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -15,7 +16,7 @@ class StoriesTableSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 12; $i++) {
 
             $newStory = new Story();
 
@@ -31,8 +32,22 @@ class StoriesTableSeeder extends Seeder
             }
 
             $newStory->save();
-        
+            
+            /* assign some sample tags to some sample stories */
+            $sortedIds = [];
+
+            if($i % 4 == 0) {
+                $sortedTags = Tag::all()->random(random_int(1, 3), true);
+
+                foreach ($sortedTags as $tag) {
+
+                    $sortedIds[] = $tag->id;
+                }
+                
+                //dd($sortedTags, $sortedIds);
+
+                $newStory->tags()->attach($sortedIds);
+            }
         }
-    }
-    
+    }    
 }

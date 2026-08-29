@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Stories;
 
 use App\Http\Controllers\Controller;
+use App\Models\Story;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -24,7 +25,9 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('admin.tags.create');
+        $stories = Story::all();
+
+        return view('admin.tags.create', compact('stories'));
     }
 
     /**
@@ -46,6 +49,10 @@ class TagController extends Controller
 
         $newTag->save();
 
+        if ($request->has('stories')) {
+            $newTag->stories()->attach($data['stories']);
+        }
+
         return redirect()->route('admin.tags.show', $newTag);
     }
 
@@ -62,7 +69,9 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        return view('admin.tags.edit', compact('tag'));
+        $stories = Story::all();
+
+        return view('admin.tags.edit', compact('tag', 'stories'));
     }
 
     /**
@@ -76,7 +85,13 @@ class TagController extends Controller
         $tag->label = $data['label'] ?? $data['name'];
         $tag->description = $data['description'] ?? '- missing -';
 
-        $tag->save();
+        $tag->update();
+
+        if ($request->has('stories')) {
+            $tag->stories()->sync($data['stories']);
+        } else {
+            $tag->stories()->detach();
+        }
 
         return redirect()->route('admin.tags.show', $tag);
     }
@@ -86,6 +101,8 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
+        $tag->stories()->detach();
+        
         $tag->delete();
 
         return redirect()->route('admin.tags.index');

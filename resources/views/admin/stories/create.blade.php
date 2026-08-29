@@ -26,12 +26,31 @@
  
     <div class="form-group my-3 text-bg-success p-2 rounded">
       <label for="content">Content</label>
-      <textarea class="form-control" name="content" id="content" rows="8"></textarea>
+      <textarea class="form-control" name="content" id="content" rows="6"></textarea>
     </div>
 
     <div class="form-group my-3 text-bg-success p-2 rounded">
       <label for="cover_img">Cover image</label>
       <input type="text" class="form-control" name="cover_img" id="cover_img">
+    </div>
+
+    <div class="form-group my-3 text-bg-success p-2 rounded">
+      <div class="d-flex gap-5">
+        <label for="tags">Tags</label>
+        @foreach ($tags as $tag)
+        <div class="form-check">
+          <input 
+            class="form-check-input" 
+            type="checkbox" 
+            name="tags[]"
+            value="{{ $tag['id'] }}" 
+            id="tag-{{ $tag['slug'] }}">
+          <label class="form-check-label" for="tag-{{ $tag['slug'] }}">
+            {{ $tag['name'] }}
+          </label>
+        </div>
+        @endforeach
+      </div>
     </div>
 
     <div class="form-group my-3">

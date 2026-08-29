@@ -27,6 +27,26 @@
     </div>
 
     <div class="form-group my-3 text-bg-warning p-2 rounded">
+      <div class="d-flex gap-5">
+        <label for="tags">Tags</label>
+        @foreach ($tags as $tag)
+        <div class="form-check">
+          <input 
+            class="form-check-input" 
+            type="checkbox" 
+            name="tags[]"
+            value="{{ $tag['id'] }}" 
+            id="tag-{{ $tag['slug'] }}"
+            {{ $story->tags->contains($tag->id) ? 'checked' : '' }}>
+          <label class="form-check-label" for="tag-{{ $tag['slug'] }}">
+            {{ $tag['name'] }}
+          </label>
+        </div>
+        @endforeach
+      </div>
+    </div>
+
+    <div class="form-group my-3 text-bg-warning p-2 rounded">
       <label for="issue_id">issue</label>
       <select class="form-select" aria-label="Default select example" name="issue_id" id="issue_id">
         @foreach ($issues as $issue)
