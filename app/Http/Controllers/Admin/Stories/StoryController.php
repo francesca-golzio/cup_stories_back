@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Stories;
+namespace App\Http\Controllers\Admin\Stories;
 
 use App\Http\Controllers\Controller;
 use App\Models\Author;
