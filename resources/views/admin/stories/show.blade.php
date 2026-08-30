@@ -6,11 +6,7 @@
 
     <div class="card story_card mb-3" ><!-- style="max-width: 800px;" -->
       <div class="row">
-
-        <div class="col-md-4">
-          <img src="{{$story->cover_img}}" class="img-fluid rounded-start w-100" alt="{{ $story->title }}"/>
-        </div>
-
+        
         <div class="col-md-6">
           <div class="card-body">
             <h4 class="card-title">{{ $story->title }}</h4>
@@ -18,7 +14,12 @@
               <small class="text-muted">by</small>
               {{ $story->author->name . ' ' . $story->author->surname }}
             </h6>
-            <p class="card-text mt-3">{{ $story->content }}</p>
+            @if ($story->cover_img)        
+            <div class="story_img">
+              <img src="{{ asset('storage/' . $story->cover_img) }}" class="img-fluid rounded w-100" alt="{{ $story->title }} cover image"/>
+            </div>
+            @endif
+            <p class="card-text mt-3">{{ $story->content }}</p>            
           </div>
         </div>
 

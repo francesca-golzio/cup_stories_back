@@ -6,7 +6,7 @@
   
   <h4>Edit the Short Story</h4>
 
-  <form action="{{ route('admin.stories.update', $story) }}" method="POST">
+  <form action="{{ route('admin.stories.update', $story) }}" method="POST" enctype="multipart/form-data">
   @csrf
   @method('PUT')
 
@@ -70,7 +70,12 @@
 
     <div class="form-group my-3 text-bg-warning p-2 rounded">
       <label for="cover_img">Cover image</label>
-      <input type="text" class="form-control" name="cover_img" id="cover_img" value="{{ $story->cover_img }}">
+      <input type="file" class="form-control" name="cover_img" id="cover_img" value="{{ $story->cover_img }}">
+       @if ($story->cover_img)        
+        <div class="img_tumb">
+          <img src="{{ asset('storage/' . $story->cover_img) }}" class="img-fluid rounded mt-2 w-25" alt='tumbnail of the current "{{ $story->title }}" cover image'/>
+        </div>
+        @endif
     </div>
 
     <div class="form-group">

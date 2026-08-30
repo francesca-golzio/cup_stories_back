@@ -8,6 +8,7 @@ use App\Models\Issue;
 use App\Models\Story;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class StoryController extends Controller
@@ -46,8 +47,12 @@ class StoryController extends Controller
         $newStory->title = $data['title'];
         $newStory->author_id = $data['author_id']; 
         $newStory->content = $data['content'];
-        $newStory->cover_img = $data['cover_img'];
         $newStory->slug = Str::slug($data['title'], '-');
+
+        if (array_key_exists('cover_img', $data)) {
+            $img_url = Storage::putFile('stories', $data['cover_img']);
+            $newStory->cover_img = $img_url;
+        }
 
         //dd($newStory);
 
@@ -90,9 +95,17 @@ class StoryController extends Controller
         $story->title = $data['title'];
         $story->author_id = $data['author_id']; 
         $story->content = $data['content'];
-        $story->cover_img = $data['cover_img'];
         $story->slug = Str::slug($data['title'], '-');
         $story->issue_id = $data['issue_id'];
+
+        if (array_key_exists('cover_img', $data)) {
+
+            if ($story->cover_img) {
+                Storage::delete($story->cover_img);
+            }
+            $img_url = Storage::putFile('stories', $data['cover_img']);
+            $story->cover_img = $img_url;
+        }
 
         //dd($story);
 
@@ -113,6 +126,10 @@ class StoryController extends Controller
     public function destroy(Story $story)
     {
         $story->tags()->detach();
+
+        if ($story->cover_img) {
+            Storage::delete($story->cover_img);
+        }
         
         $story->delete();
 
