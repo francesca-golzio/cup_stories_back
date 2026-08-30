@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Stories;
 use App\Http\Controllers\Controller;
 use App\Models\Author;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class AuthorController extends Controller
@@ -38,8 +39,12 @@ class AuthorController extends Controller
         $newAuthor->name = $data['name'];
         $newAuthor->surname = $data['surname'];
         $newAuthor->bio = $data['bio'];
-        $newAuthor->photo = $data['photo'];
         $newAuthor->slug = Str::slug($data['name'] . ' ' . $data['surname'], '-');
+
+        if (array_key_exists('photo', $data)) {
+            $img_url = Storage::putFile('authors', $data['photo']);
+            $newAuthor->photo = $img_url;
+        }
 
         //dd($newAuthor);
 
@@ -74,8 +79,16 @@ class AuthorController extends Controller
         $author->name = $data['name'];
         $author->surname = $data['surname'];
         $author->bio = $data['bio'];
-        $author->photo = $data['photo'];
         $author->slug = Str::slug($data['name'] . ' ' . $data['surname'], '-');
+
+        if (array_key_exists('photo', $data)) {
+
+            if ($author->photo) {
+                Storage::delete($author->photo);
+            }
+            $img_url = Storage::putFile('authors', $data['photo']);
+            $author->photo = $img_url;
+        }
 
         //dd($author);
 
@@ -89,6 +102,10 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
+        if($author->photo) {
+            Storage::delete($author->photo);
+        }
+        
         $author->delete();
 
         return redirect()->route('admin.authors.index');

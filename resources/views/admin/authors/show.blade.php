@@ -7,11 +7,13 @@
     <div class="card author_card my-3 bg-info p-2 rounded" >
       <div class="row bg-light p-3">
 
-        <div class="col-md-4">
-          <img src="{{$author->photo}}" class="img-fluid rounded-circle w-100" alt="{{ $author->name . ' ' . $author->surname }}"/>
+        @if ($author->photo)
+        <div class="col-md-3 author_photo">
+          <img src="{{ asset('storage/' . $author->photo) }}" class="img-fluid rounded-circle w-100" alt="{{ $author->name . ' ' . $author->surname }}"/>
         </div>
+        @endif
 
-        <div class="col-md-6">
+        <div class="col-md-7">
 
           <h2 class="card-title">{{ $author->name . ' ' . $author->surname }}</h2>
 

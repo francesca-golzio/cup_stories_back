@@ -6,7 +6,7 @@
   
   <h4>Add a new Short Story</h4>
 
-  <form action="{{ route('admin.authors.update', $author) }}" method="POST">
+  <form action="{{ route('admin.authors.update', $author) }}" method="POST" enctype="multipart/form-data">
   @csrf
   @method('PUT')
 
@@ -27,8 +27,12 @@
 
     <div class="form-group my-3 text-bg-warning p-2 rounded">
       <label for="photo">Photography</label>
-      <input type="text" class="form-control my-2" name="photo" id="photo" value="{{ $author->photo }}">
-      <img src="{{ $author->photo }}" class="rounded" alt="current author photo" style="width: 100px; height: 100px;">
+      <input type="file" class="form-control my-2" name="photo" id="photo" value="{{ $author->photo }}">
+      @if ($author->photo)
+      <div class="img_tumb">
+      <img src="{{ asset('storage/' . $author->photo) }}" class="img-fluid rounded mt-2" alt="current author photo" title="current author photo" style="width: 100px; height: 100px;">
+      @endif
+      </div>
     </div>
 
     <div class="form-group my-3">

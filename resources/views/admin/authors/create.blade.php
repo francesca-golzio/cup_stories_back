@@ -6,7 +6,7 @@
   
   <h4>Add a new Author</h4>
 
-  <form action="{{ route('admin.authors.store') }}" method="POST">
+  <form action="{{ route('admin.authors.store') }}" method="POST" enctype="multipart/form-data">
   @csrf
 
     <div class="form-group my-3 text-bg-success p-2 rounded">
@@ -26,7 +26,7 @@
 
     <div class="form-group my-3 text-bg-success p-2 rounded">
       <label for="photo">Photography</label>
-      <input type="text" class="form-control" name="photo" id="photo">
+      <input type="file" class="form-control" name="photo" id="photo">
     </div>
 
     <div class="form-group my-3">

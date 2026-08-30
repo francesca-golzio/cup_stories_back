@@ -18,7 +18,13 @@
     <tbody>
       @foreach ($authors as $author)
       <tr class="">
-        <td scope="row"><img src="{{ $author->photo }}" alt="{{ $author->surname . ' ' . $author->name }}" class="rounded-circle" style="width: 50px;"></td>
+        <td scope="row">
+          <img 
+            src="{{ asset('storage/' . $author->photo) }}" 
+            alt="{{ $author->surname . ' ' . $author->name }}" 
+            class="rounded-circle" 
+            style="width: 50px;">
+        </td>
         <td>{{ $author->surname }}</td>
         <td>{{ $author->name }}</td>
         <td><a href="{{ route('admin.authors.show', $author) }}" class="btn btn-info">show</a></td>
