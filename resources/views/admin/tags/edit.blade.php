@@ -12,17 +12,17 @@
 
     <div class="form-group my-3 text-bg-warning p-2 rounded">
       <label for="name">Name</label>
-      <input type="text" class="form-control" name="name" id="name" value="{{ $tag->name }}">
+      <input type="text" class="form-control" name="name" id="name" maxlength="30" required aria-required="true" value="{{ $tag->name }}">
     </div>
     
     <div class="form-group my-3 text-bg-warning p-2 rounded">
       <label for="label">Label <small class="text-muted">~ optional shorter name</small></label>
-      <input type="text" class="form-control" name="label" id="label" value="{{ $tag->label }}">
+      <input type="text" class="form-control" name="label" id="label" maxlength="30"  value="{{ $tag->label }}">
     </div>
 
     <div class="form-group my-3 text-bg-warning p-2 rounded">
       <label for="description">Description <small class="text-muted">~ max 250 characters</small></label>
-      <textarea type="text" class="form-control" name="description" id="description">{{ $tag->description }}</textarea>
+      <textarea type="text" class="form-control" name="description" id="description" maxlength="250">{{ $tag->description }}</textarea>
     </div>
 
     <div class="form-group my-3 text-bg-warning p-2 rounded">

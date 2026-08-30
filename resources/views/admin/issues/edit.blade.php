@@ -12,7 +12,7 @@
 
     <div class="form-group my-3 text-bg-warning p-2 rounded">
       <label for="title">Title</label>
-      <input type="text" class="form-control" name="title" id="title" value="{{ $issue->title }}">
+      <input type="text" class="form-control" name="title" id="title" maxlength="100" required aria-required="true" value="{{ $issue->title }}">
     </div>
     
     <div class="form-group my-3 text-bg-warning p-2 rounded">

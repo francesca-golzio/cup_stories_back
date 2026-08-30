@@ -16,8 +16,8 @@ return new class extends Migration
 
             $table->string('name', 50);
             $table->string('surname', 50);
-            $table->string('photo', 255)->nullable();
-            $table->text('bio')->nullable();
+            $table->string('photo', 2083)->nullable();
+            $table->string('bio', 450)->nullable();
             $table->string('slug')->unique();
 
             $table->timestamps();

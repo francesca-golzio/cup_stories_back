@@ -12,7 +12,7 @@
 
     <div class="form-group my-3 text-bg-warning p-2 rounded">
       <label for="title">Title</label>
-      <input type="text" class="form-control" name="title" id="title" value="{{ $story->title }}">
+      <input type="text" class="form-control" name="title" id="title" value="{{ $story->title }}" maxlength="100">
     </div>
 
     <div class="form-group my-3 text-bg-warning p-2 rounded">
@@ -65,12 +65,12 @@
 
     <div class="form-group my-3 text-bg-warning p-2 rounded">
       <label for="content">Content</label>
-      <textarea class="form-control" name="content" id="content" rows="6">{{ $story->content }}</textarea>
+      <textarea class="form-control" name="content" id="content" rows="6" maxlength="3000">{{ $story->content }}</textarea>
     </div>
 
     <div class="form-group my-3 text-bg-warning p-2 rounded">
       <label for="cover_img">Cover image</label>
-      <input type="file" class="form-control" name="cover_img" id="cover_img" value="{{ $story->cover_img }}">
+      <input type="file" class="form-control" name="cover_img" id="cover_img" value="{{ $story->cover_img }}" maxlength="260">
        @if ($story->cover_img)        
         <div class="img_tumb">
           <img src="{{ asset('storage/' . $story->cover_img) }}" class="img-fluid rounded mt-2 w-25" alt='tumbnail of the current "{{ $story->title }}" cover image'/>

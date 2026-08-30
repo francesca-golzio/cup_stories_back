@@ -16,7 +16,10 @@
             </h6>
             @if ($story->cover_img)        
             <div class="story_img">
-              <img src="{{ asset('storage/' . $story->cover_img) }}" class="img-fluid rounded w-100" alt="{{ $story->title }} cover image"/>
+              <img 
+                src="{{ asset('storage/' . $story->cover_img) }}" 
+                class="img-fluid rounded w-100" 
+                alt="{{ $story->title }} cover image"/>
             </div>
             @endif
             <p class="card-text mt-3">{{ $story->content }}</p>            

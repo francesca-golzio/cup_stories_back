@@ -11,7 +11,7 @@
 
     <div class="form-group my-3 text-bg-success p-2 rounded">
       <label for="title">Title</label>
-      <input type="text" class="form-control" name="title" id="title">
+      <input type="text" class="form-control" name="title" id="title" maxlength="100" required aria-required="true">
     </div>
     
     <div class="form-group my-3 text-bg-success p-2 rounded">

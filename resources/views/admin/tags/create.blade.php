@@ -11,17 +11,17 @@
 
     <div class="form-group my-3 text-bg-success p-2 rounded">
       <label for="name">Name</label>
-      <input type="text" class="form-control" name="name" id="name">
+      <input type="text" class="form-control" name="name" id="name" maxlength="30" required aria-required="true">
     </div>
     
     <div class="form-group my-3 text-bg-success p-2 rounded">
       <label for="label">Label <small class="text-muted">~ shorter name</small></label>
-      <input type="text" class="form-control" name="label" id="label">
+      <input type="text" class="form-control" name="label" id="label" maxlength="30">
     </div>
 
     <div class="form-group my-3 text-bg-success p-2 rounded">
       <label for="description">Description <small class="text-muted">~ max 250 characters</small></label>
-      <textarea type="text" class="form-control" name="description" id="description"></textarea>
+      <textarea type="text" class="form-control" name="description" id="description" maxlength="250"></textarea>
     </div>
 
     <div class="form-group my-3">
