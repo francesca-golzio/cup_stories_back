@@ -132,8 +132,10 @@ class IssueController extends Controller
 
         $issue->update();
 
-        $issue->syncStories($data['updatedStories']);
-
+        if (!empty($data['updatedStories'])) {
+            $issue->syncStories($data['updatedStories']);
+        }
+        
         return redirect()->route('admin.issues.show', $issue);
     }
 
