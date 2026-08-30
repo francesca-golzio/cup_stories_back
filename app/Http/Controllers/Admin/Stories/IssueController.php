@@ -7,6 +7,7 @@ use App\Models\Issue;
 use App\Models\Story;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class IssueController extends Controller
@@ -41,8 +42,12 @@ class IssueController extends Controller
         $newIssue->title = $data['title'];
         $newIssue->status = 'draft';
         $newIssue->color = $data['color'];
-        $newIssue->cover_img = $data['cover_img'];
         $newIssue->slug = Str::slug($data['title'], '-');
+
+        if (array_key_exists('cover_img', $data)) {
+            $img_url = Storage::putFile('stories', $data['cover_img']);
+            $newIssue->cover_img = $img_url;
+        }
 
         //dd($newIssue);
 
@@ -85,8 +90,16 @@ class IssueController extends Controller
 
         $issue->title = $data['title'];
         $issue->color = $data['color'];
-        $issue->cover_img = $data['cover_img'];
         $issue->slug = Str::slug($data['title'], '-');
+
+        if (array_key_exists('cover_img', $data)) {
+
+            if ($issue->cover_img) {
+                Storage::delete($issue->cover_img);
+            }
+            $img_url = Storage::putFile('stories', $data['cover_img']);
+            $issue->cover_img = $img_url;
+        }
         
         /* set $issue->status */
         if ($data['set_status'] == 'save_draft') {
@@ -129,6 +142,10 @@ class IssueController extends Controller
      */
     public function destroy(Issue $issue)
     {
+        if($issue->cover_img) {
+            Storage::delete($issue->cover_img);
+        }
+    
         $issue->delete();
 
         return redirect()->route('admin.issues.index');

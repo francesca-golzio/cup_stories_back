@@ -19,7 +19,15 @@
     <tbody>
       @foreach ($issues as $issue)
       <tr class="">
-        <td scope="row"><img src="{{ $issue->cover_img }}" alt="{{ $issue->title}}" class="rounded" style="width: 200px; aspect-ratio: 3/1; object-fit: cover"></td>
+        <td scope="row">
+          @if ($issue->cover_img)
+          <img 
+            src="{{ asset('storage/' . $issue->cover_img) }}" 
+            alt="{{ $issue->title}}" 
+            class="rounded" 
+            style="width: 200px; aspect-ratio: 3/1; object-fit: cover">
+          @endif
+        </td>
         <td><h4>{{ $issue->title }}</h4></td>
         <td>{{ $issue->status }}</td>
         <td>{{ $issue->pubblication_number}}</td>

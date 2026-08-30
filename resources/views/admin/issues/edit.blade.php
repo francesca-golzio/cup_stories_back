@@ -6,7 +6,7 @@
   
   <h4>Update the current Issue</h4>
 
-  <form action="{{ route('admin.issues.update', $issue) }}" method="POST">
+  <form action="{{ route('admin.issues.update', $issue) }}" method="POST" enctype="multipart/form-data">
   @csrf
   @method('PUT')
 
@@ -41,8 +41,15 @@
 
     <div class="form-group my-3 text-bg-warning p-2 rounded">
       <label for="cover_img">Cover image</label>
-      <input type="text" class="form-control " name="cover_img" id="cover_img" value="{{ $issue->cover_img }}">
-      <img src="{{ $issue->cover_img }}" alt="current cover image" width="80" class="rounded mt-2">
+      <input type="file" class="form-control " name="cover_img" id="cover_img" value="{{ $issue->cover_img }}">
+      @if ($issue->cover_img)
+      <div class="img_tumb">
+        <img 
+        src="{{ asset('storage/' . $issue->cover_img) }}" 
+        class="img-fluid rounded mt-2 w-25" 
+        alt='tumbnail of the current "{{ $issue->title }}" cover image'">
+      </div>
+      @endif
     </div>
 
     <div class="d-flex align-items-center gap-3">
