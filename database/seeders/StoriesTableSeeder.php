@@ -24,7 +24,7 @@ class StoriesTableSeeder extends Seeder
             $newStory = new Story();
 
             $newStory->title = Str::of($faker->sentence())->remove('.');
-            $newStory->content = $faker->paragraphs(3, true);
+            $newStory->content = $faker->paragraphs(12, true);
             $newStory->slug = Str::slug($newStory->title, '-');
             $newStory->author_id = rand(1, 7);            
             $newStory->cover_img = $sampleImages[array_rand($sampleImages)];
