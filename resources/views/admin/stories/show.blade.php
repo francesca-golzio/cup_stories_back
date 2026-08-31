@@ -2,17 +2,21 @@
 
 @section('content')
 
-<div class="container my-4">
+<nav class="pt-2"><a href="{{ route('admin.stories.index') }}">back to list</a></nav>
 
-    <div class="card story_card mb-3" ><!-- style="max-width: 800px;" -->
-      <div class="row">
+<div class="container my-2" style="max-width: 800px">
+
+    <div class="card story_card bg-info py-2 mb-3" ><!-- style="max-width: 800px;" -->
+      <div class="row bg-light">
         
-        <div class="col-md-6">
+        <div class="col-md-9">
           <div class="card-body">
             <h4 class="card-title">{{ $story->title }}</h4>
-            <h6 class="card-subtitle text-body-secondary">
+            <h6 class="card-subtitle text-body-secondary" style="text-align: right;">
               <small class="text-muted">by</small>
-              {{ $story->author->name . ' ' . $story->author->surname }}
+              <a href="{{ route('admin.authors.show', $story->author) }}">
+                {{ $story->author->name . ' ' . $story->author->surname }}
+              </a>
             </h6>
             @if ($story->cover_img)        
             <div class="story_img">
@@ -26,7 +30,7 @@
           </div>
         </div>
 
-        <div class="col-md-2 d-flex flex-column gap-3 my-3">
+        <div class="col-md-3 d-flex flex-column gap-3 my-3 ">
 
           @if ($story->tags->count() > 0)
           <div>            
@@ -40,11 +44,13 @@
           </div>
           @endif
           
+          <div>
           @if ($story->issue->pubblication_number === 0)
           {{ $story->issue->status }} unassigned
           @else ($story->issue->pubblication_number !== 0)
-          {{ $story->issue->status }} on Issue n° {{ $story->issue->pubblication_number }}<br>{{ $story->issue->title }}
+          {{ $story->issue->status }} on Issue n° <a href="{{ route('admin.issues.show', $story->issue) }}">{{ $story->issue->pubblication_number }}<br>{{ $story->issue->title }}</a>
           @endif
+          </div>
         
           @if ($story->issue->status == 'published')
           <div>
