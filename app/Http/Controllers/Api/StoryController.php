@@ -12,15 +12,20 @@ use function Laravel\Prompts\error;
 
 class StoryController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         
-        $stories = Story::with('author', 'issue', 'tags')
+       $query = Story::with('author', 'issue', 'tags')
             ->where('issue_id', '!=', 1)
-            ->whereHas('issue', function ($query) {
-                $query->where('status', 'published');
-            })
-            ->paginate(7);
-            // $stories = Story::with('author', 'issue', 'tags')->get();
+            ->whereHas('issue', function ($q) {
+                $q->where('status', 'published');
+            });
+
+        if ($request->boolean('paginate', true)) {   /* ?paginate=true or nothing */
+            $perPage = $request->integer('perPage', 8);
+            $stories = $query->paginate($perPage);
+        } else {
+            $stories = $query->get();                /* ?paginate=false */
+        }
             
         return response()->json(
             [
