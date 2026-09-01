@@ -1,7 +1,7 @@
 # Cup Stories
 ## Small Reading Treats
 repo: `cup_stories_back`<br>
-repo: `cup_stories_front` *(coming soon)*
+repo: `cup_stories_front`
 
 fullstack curricular project
 
