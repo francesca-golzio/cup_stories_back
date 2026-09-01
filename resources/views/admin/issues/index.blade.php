@@ -22,7 +22,7 @@
         <td scope="row">
           @if ($issue->cover_img)
           <img 
-            src="{{ asset('storage/' . $issue->cover_img) }}" 
+            src="{{ $issue->cover_img }}" 
             alt="{{ $issue->title}}" 
             class="rounded" 
             style="width: 200px; aspect-ratio: 3/1; object-fit: cover">

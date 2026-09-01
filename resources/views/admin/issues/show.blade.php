@@ -42,7 +42,7 @@
             <div class="d-none d-lg-block mb-3 mx-3">
               @if ($issue->cover_img)
               <img 
-                src="{{asset('storage/' . $issue->cover_img)}}" 
+                src="{{$issue->cover_img}}" 
                 class="img-fluid rounded" 
                 alt="{{ $issue->title}}" 
                 style="object-fit: cover;"/>

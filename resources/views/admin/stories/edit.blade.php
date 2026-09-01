@@ -73,7 +73,7 @@
       <input type="file" class="form-control" name="cover_img" id="cover_img" value="{{ $story->cover_img }}" maxlength="260">
        @if ($story->cover_img)        
         <div class="img_tumb">
-          <img src="{{ asset('storage/' . $story->cover_img) }}" class="img-fluid rounded mt-2 w-25" alt='tumbnail of the current "{{ $story->title }}" cover image'/>
+          <img src="{{ $story->cover_img }}" class="img-fluid rounded mt-2 w-25" alt='tumbnail of the current "{{ $story->title }}" cover image'/>
         </div>
         @endif
     </div>

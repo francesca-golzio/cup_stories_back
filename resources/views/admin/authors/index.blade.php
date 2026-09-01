@@ -20,7 +20,7 @@
       <tr class="">
         <td scope="row">
           <img 
-            src="{{ asset('storage/' . $author->photo) }}" 
+            src="{{ $author->photo }}" 
             alt="{{ $author->surname . ' ' . $author->name }}" 
             class="rounded-circle" 
             style="width: 50px;">

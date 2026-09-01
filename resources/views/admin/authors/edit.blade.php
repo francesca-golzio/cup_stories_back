@@ -30,7 +30,7 @@
       <input type="file" class="form-control my-2" name="photo" id="photo" value="{{ $author->photo }}" maxlength="260">
       @if ($author->photo)
       <div class="img_tumb">
-      <img src="{{ asset('storage/' . $author->photo) }}" class="img-fluid rounded mt-2" alt="current author photo" title="current author photo" style="width: 100px; height: 100px;">
+      <img src="{{ $author->photo }}" class="img-fluid rounded mt-2" alt="current author photo" title="current author photo" style="width: 100px; height: 100px;">
       @endif
       </div>
     </div>

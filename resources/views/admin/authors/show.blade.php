@@ -11,7 +11,7 @@
 
         @if ($author->photo)
         <div class="col-md-3 author_photo">
-          <img src="{{ asset('storage/' . $author->photo) }}" class="img-fluid rounded-circle w-100 pb-3" alt="{{ $author->name . ' ' . $author->surname }}"/>
+          <img src="{{ $author->photo }}" class="img-fluid rounded-circle w-100 pb-3" alt="{{ $author->name . ' ' . $author->surname }}"/>
         </div>
         @endif
 

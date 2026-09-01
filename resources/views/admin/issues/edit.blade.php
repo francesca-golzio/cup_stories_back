@@ -45,7 +45,7 @@
       @if ($issue->cover_img)
       <div class="img_tumb">
         <img 
-        src="{{ asset('storage/' . $issue->cover_img) }}" 
+        src="{{ $issue->cover_img }}" 
         class="img-fluid rounded mt-2 w-25" 
         alt='tumbnail of the current "{{ $issue->title }}" cover image'">
       </div>

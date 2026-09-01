@@ -27,7 +27,7 @@ class IssuesTableSeeder extends Seeder
         $newIssue->slug = Str::slug( $newIssue->edition_number . ' ' . $newIssue->title); 
         $newIssue->pubblication_number = 0;
         $newIssue->published_at = now();
-        $newIssue->cover_img = $sampleImages[array_rand($sampleImages)];
+        $newIssue->cover_img = "http://localhost:8000/storage/" . $sampleImages[array_rand($sampleImages)];
 
         $newIssue->save();
         
@@ -38,7 +38,7 @@ class IssuesTableSeeder extends Seeder
             $newIssue->title = $faker->text(50);
             $newIssue->status = 'draft';
             $newIssue->color = $faker->hexColor();
-            $newIssue->cover_img = $sampleImages[array_rand($sampleImages)];
+            $newIssue->cover_img = "http://localhost:8000/storage/" . $sampleImages[array_rand($sampleImages)];
             $newIssue->slug = Str::slug( $newIssue->edition_number . ' ' . $newIssue->title); 
             
             /* pubblica la prima issue */

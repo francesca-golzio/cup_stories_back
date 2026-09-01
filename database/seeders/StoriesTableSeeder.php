@@ -19,15 +19,15 @@ class StoriesTableSeeder extends Seeder
     {
         $sampleImages = Storage::disk('public')->files('seeders/sampleimages');
 
-        for ($i = 0; $i < 12; $i++) {
+        for ($i = 0; $i < 20; $i++) {
 
             $newStory = new Story();
 
             $newStory->title = Str::of($faker->sentence())->remove('.');
             $newStory->content = $faker->paragraphs(12, true);
             $newStory->slug = Str::slug($newStory->title, '-');
-            $newStory->author_id = rand(1, 7);            
-            $newStory->cover_img = $sampleImages[array_rand($sampleImages)];
+            $newStory->author_id = rand(1, 7);
+            $newStory->cover_img =  "http://localhost:8000/storage/" . $sampleImages[array_rand($sampleImages)];
 
 
             /* assign some stories to the sample published issue */

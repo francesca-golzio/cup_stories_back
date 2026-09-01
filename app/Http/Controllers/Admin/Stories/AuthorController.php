@@ -43,7 +43,7 @@ class AuthorController extends Controller
 
         if (array_key_exists('photo', $data)) {
             $img_url = Storage::putFile('authors', $data['photo']);
-            $newAuthor->photo = $img_url;
+            $newAuthor->photo =  "http://localhost:8000/storage/" . $img_url;
         }
 
         //dd($newAuthor);
@@ -87,7 +87,7 @@ class AuthorController extends Controller
                 Storage::delete($author->photo);
             }
             $img_url = Storage::putFile('authors', $data['photo']);
-            $author->photo = $img_url;
+            $author->photo = "http://localhost:8000/storage/" . $img_url;
         }
 
         //dd($author);

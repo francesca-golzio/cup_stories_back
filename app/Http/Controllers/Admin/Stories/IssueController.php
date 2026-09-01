@@ -46,7 +46,7 @@ class IssueController extends Controller
 
         if (array_key_exists('cover_img', $data)) {
             $img_url = Storage::putFile('stories', $data['cover_img']);
-            $newIssue->cover_img = $img_url;
+            $newIssue->cover_img =  "http://localhost:8000/storage/" . $img_url;
         }
 
         //dd($newIssue);
@@ -98,7 +98,7 @@ class IssueController extends Controller
                 Storage::delete($issue->cover_img);
             }
             $img_url = Storage::putFile('stories', $data['cover_img']);
-            $issue->cover_img = $img_url;
+            $issue->cover_img = "http://localhost:8000/storage/" . $img_url;
         }
         
         /* set $issue->status */
