@@ -104,7 +104,7 @@ class StoryController extends Controller
                 Storage::delete($story->cover_img);
             }
             $img_url = Storage::putFile('stories', $data['cover_img']);
-            $story->cover_img = $img_url;
+            $story->cover_img = "http://localhost:8000/storage/" . $img_url;
         }
 
         //dd($story);
