@@ -33,23 +33,20 @@ class StoryController extends Controller
                     
     public function show(Story $story) {
                         
-        $storia = [];
-
         if ($story->issue_id != 1 && $story->issue->status == 'published') {
-            $storia = Story::with('author', 'issue', 'tags')
-                ->paginate(7);
-        }
-        
-        if (empty($storia)) {
-            return response()->json('Story not found');
-            
+            $story->load('author', 'issue', 'tags');
+            $res = [
+                'success' => true,
+                'data' => $story,
+            ];
+
         } else {
-            return response()->json(
-                [
-                    'success' => true,
-                    'data' => $storia,
-                ]
-            );
+            $res = [
+                'success' => false,
+                'message' => 'Story not found',
+            ];
         }
+            
+        return response()->json($res);
     }
 }
