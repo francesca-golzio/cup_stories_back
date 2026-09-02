@@ -5,10 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Story;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response as HttpResponse;
-use Illuminate\Support\Facades\Response;
-
-use function Laravel\Prompts\error;
 
 class StoryController extends Controller
 {
@@ -21,7 +17,7 @@ class StoryController extends Controller
             });
 
         if ($request->boolean('paginate', true)) {   /* ?paginate=true or nothing */
-            $perPage = $request->integer('perPage', 8);
+            $perPage = $request->integer('perPage', 6);
             $stories = $query->paginate($perPage);
         } else {
             $stories = $query->get();                /* ?paginate=false */
@@ -30,7 +26,7 @@ class StoryController extends Controller
         return response()->json(
             [
                 'success' => true,
-                'data' => $stories,
+                'results' => $stories,
             ]
         );
     }
