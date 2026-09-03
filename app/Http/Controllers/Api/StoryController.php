@@ -37,7 +37,7 @@ class StoryController extends Controller
             $story->load('author', 'issue', 'tags');
             $res = [
                 'success' => true,
-                'data' => $story,
+                'results' => $story,
             ];
 
         } else {
