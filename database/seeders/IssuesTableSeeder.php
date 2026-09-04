@@ -16,7 +16,7 @@ class IssuesTableSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        $sampleImages = Storage::disk('public')->files('seeders/sampleimages');
+        $sampleImages = Storage::disk('public')->files('seeders/sampleissuesbanner');
 
         /* DEFAULT ISSUE for unassigned stories */
         $newIssue = new Issue();

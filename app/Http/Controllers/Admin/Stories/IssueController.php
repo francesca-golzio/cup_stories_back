@@ -45,7 +45,7 @@ class IssueController extends Controller
         $newIssue->slug = Str::slug($data['title'], '-');
 
         if (array_key_exists('cover_img', $data)) {
-            $img_url = Storage::putFile('stories', $data['cover_img']);
+            $img_url = Storage::putFile('issues', $data['cover_img']);
             $newIssue->cover_img =  "http://localhost:8000/storage/" . $img_url;
         }
 
@@ -97,7 +97,7 @@ class IssueController extends Controller
             if ($issue->cover_img) {
                 Storage::delete($issue->cover_img);
             }
-            $img_url = Storage::putFile('stories', $data['cover_img']);
+            $img_url = Storage::putFile('issues', $data['cover_img']);
             $issue->cover_img = "http://localhost:8000/storage/" . $img_url;
         }
         
