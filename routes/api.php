@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\IssueController;
 use App\Http\Controllers\Api\StoryController;
 use Illuminate\Http\Request;
@@ -10,6 +11,8 @@ route::get('stories/{story:slug}', [StoryController::class, 'show']);
 
 route::get('issues', [IssueController::class, 'index']);
 route::get('issues/{issue:pubblication_number}', [IssueController::class, 'show']);
+
+route::get('authors/{author:slug}', [AuthorController::class, 'show']);
 
 
 /* Route::get('/user', function (Request $request) {
