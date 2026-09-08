@@ -12,6 +12,7 @@ route::get('stories/{story:slug}', [StoryController::class, 'show']);
 route::get('issues', [IssueController::class, 'index']);
 route::get('issues/{issue:pubblication_number}', [IssueController::class, 'show']);
 
+route::get('authors', [AuthorController::class, 'index']);
 route::get('authors/{author:slug}', [AuthorController::class, 'show']);
 
 

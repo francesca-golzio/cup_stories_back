@@ -4,11 +4,30 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Author;
-use App\Models\Issue;
-use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
+    
+    public function index() {
+        
+/*         $authors = Author::with(['stories' => function ($query) {
+            $query->where('issue_id', '!=', 1);
+        }])->get();
+
+        $authors->filter(function ($author) {
+            return !$author->stories->isNotEmpty();
+        })->values(); */
+
+        $authors = Author::whereHas('stories', function ($query) {
+            $query->where('issue_id', '!=', 1);
+        })->get();
+
+        return response()->json([
+            'success' => true,
+            'results' => $authors
+        ]);
+    }
+
     public function show(Author $author) {
                
                 
