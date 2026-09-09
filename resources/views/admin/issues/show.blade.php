@@ -50,7 +50,7 @@
             </div>
           </div>
           
-          <div class="col-12 col-md-3 d-flex flex-column gap-3 my-3">     
+          <div class="col col-12 col-md-3 d-flex flex-column gap-3 my-3">     
 
             @if ($issue->pubblication_number !== 0)              
             <div class="d-flex flex-column flex-wrap gap-2">
@@ -58,10 +58,22 @@
               <div>Status: <span class="fw-bold">{{ $issue->status }}</span></div>
               <div class="text-muted">Published at {{ $issue->published_at }}</div>
             </div>
-            <div class="d-flex flex-wrap gap-3">
-              <button class="btn btn-info {{ $issue->status == 'published' ? 'disabled' : '' }}">Publish</button>
-              <button class="btn btn-info {{ $issue->status !== 'published' ? 'disabled' : '' }}">Unpublish</button>
-            </div>
+            
+            <!-- <div class="issue_detail_btn_container d-flex flex-wrap gap-3"> -->
+
+              <form action="{{ route('admin.issues.updateStatus', $issue) }}" method="POST">
+                @csrf
+                @method('PATCH')
+                <input type="hidden" name="status" value="{{ $issue->status === 'draft' ? 'published' : 'draft' }}">
+                <button  type="submit" class="form-control issue_detail_publish_btn  btn btn-info">
+                  {{ $issue->status === 'draft' ? 'publish' : 'unpublish' }}
+                </button>
+              </form>
+
+
+              
+            <!-- </div> -->
+          
             @endif
 
             <div><a href="{{ route('admin.issues.edit', $issue) }}" class="btn btn-warning">edit</a></div>
@@ -71,12 +83,11 @@
             @endif
           </div>
             
-        <!-- </div>      -->
+
 
       </div>
     </div>
     
-</div>
 
 <!-- Modal -->
 <x-delete_button_modal :entity="$issue" entityType="issue" tableName="issues" />

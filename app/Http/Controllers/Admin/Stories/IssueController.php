@@ -139,6 +139,20 @@ class IssueController extends Controller
         return redirect()->route('admin.issues.show', $issue);
     }
 
+    /* Update the status of the issue */
+    public function updateStatus(Request $request, Issue $issue) 
+    {        
+        $request->validate([
+            'status' => 'required|in:draft,published'
+        ]);
+
+        //dd($request->status);
+
+        $issue->update(['status' => $request->status]);
+
+        return back()->with('success', 'Status updated successfully');
+    }
+
     /**
      * Remove the specified resource from storage.
      */

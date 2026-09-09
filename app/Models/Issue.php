@@ -19,4 +19,6 @@ class Issue extends Model
         Story::whereIn('id', $updatedStories)
             ->update(['issue_id' => $this->id]);
     }
+
+    protected $fillable = ['status'];
 }

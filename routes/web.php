@@ -37,6 +37,7 @@ Route::middleware(['auth', 'verified'])
 
         /* Issues */
         Route::resource('issues', IssueController::class);
+        Route::patch('issues/{issue}/status', [IssueController::class, 'updateStatus'])->name('issues.updateStatus');
 
         /* Tags */
         Route::resource('tags', TagController::class);
