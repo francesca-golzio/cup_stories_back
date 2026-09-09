@@ -32,35 +32,39 @@
 
         <div class="col-md-3 d-flex flex-column gap-3 my-3 ">
 
-          @if ($story->tags->count() > 0)
           <div>            
-            @foreach ($story->tags as $tag)
-            <a href="{{ route('admin.tags.show', $tag) }}">
-              <small class="border border-secondary rounded px-1 mx-1">
-                {{ $tag->label }}
-              </small>
-            </a>
-            @endforeach
+            @if ($story->tags->count() > 0)
+              @foreach ($story->tags as $tag)
+              <a href="{{ route('admin.tags.show', $tag) }}">
+                <small class="border border-secondary rounded px-1 mx-1">
+                  {{ $tag->label }}
+                </small>
+              </a>
+              @endforeach
+            @endif
           </div>
-          @endif
           
-          <div>
-          @if ($story->issue->pubblication_number === 0)
-          {{ $story->issue->status }} unassigned
-          @else ($story->issue->pubblication_number !== 0)
-          {{ $story->issue->status }} on Issue n° <a href="{{ route('admin.issues.show', $story->issue) }}">{{ $story->issue->pubblication_number }}<br>{{ $story->issue->title }}</a>
-          @endif
-          </div>
-        
-          @if ($story->issue->status == 'published')
-          <div>
-            {{ $story->issue->pubblished_at ? $story->issue->pubblished_at->format('m-Y') : '' }}
-          </div>          
-          @endif
+          <div class="d-flex flex-wrap gap-2 justify-content-between">
+            <div>
+              @if ($story->issue->pubblication_number === 0)
+              {{ $story->issue->status }} unassigned
+              @else ($story->issue->pubblication_number !== 0)
+              {{ $story->issue->status }} on Issue n°<a href="{{ route('admin.issues.show', $story->issue) }}">{{ $story->issue->pubblication_number }}<br>{{ $story->issue->title }}</a>
+              @endif
+            </div>
+          
+            <div>
+              @if ($story->issue->status == 'published')
+              {{ $story->issue->pubblished_at ? $story->issue->pubblished_at->format('m-Y') : '' }}
+              @endif
+            </div>          
 
-          <div><a href="{{ route('admin.stories.edit', $story) }}" class="btn btn-warning">edit</a></div>
-          <div><x-delete_button :entity="$story" entityType="story"/></div>
-          
+            <div>
+              <x-edit_button :route="route('admin.stories.edit', $story)" />
+              <x-delete_button :entity="$story" entityType="story"/>
+            </div>            
+          </div>
+
         </div>
 
       </div>

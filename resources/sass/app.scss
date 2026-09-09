@@ -8,9 +8,33 @@
 @import 'bootstrap/scss/bootstrap';
 
 
+:root {
+  --issue-color: transparent;
+}
+
+
 a {
   text-decoration: none;
   color: inherit;
+}
+
+i.bi{
+  font-size: 1.5rem;
+}
+
+.delete_button,
+.edit_button,
+.show_button {
+  text-align: center;
+  line-height: 0;
+  padding: 8px;
+  border: none;
+  max-width: max-content;
+}
+
+.add_instance_button {
+  border-width: 2px;
+
 }
 
 .container:has(issue_card) {
@@ -22,6 +46,10 @@ a {
   width: 100%;
 }
 
-.issue_detail_publish_btn {
+.issue_publish_unpublish_btn {
+  line-height: 0;
+  text-transform: uppercase;
+  padding: 8px;
+  border-width: 2px;
   max-width: max-content;
 }

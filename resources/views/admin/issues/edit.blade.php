@@ -68,8 +68,6 @@
 
       <span>or</span>
 
-      {{-- TODO: 📌 gestire i link (e i rendering condizionali) per i bottoni publish e unpublish. forse si potrebbe usare una modale che contiene (nascosto) il form per confermare la pubblicazione? 🤔 però i bottoni sono nella show, non nella edit... --}}
-      {{-- TODO: 📌 ?? usare una modale per confermare la pubblicazione --}}
       <div class="form-group my-3">
         <button type="submit" class="form-control btn btn-warning" name="set_status" value="publish">Publish the updated Issue</button>
       </div> 

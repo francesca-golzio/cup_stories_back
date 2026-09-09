@@ -10,7 +10,6 @@
       
       <div class="d-flex flex-wrap bg-light w-100">
         
-        <!-- <div class="d-flex flex-wrap p-1"> -->
           
           <div class="col-12 col-md-9">
             <h2 class="px-3 pt-3">{{ $issue->title }}</h2>
@@ -49,40 +48,40 @@
             </div>
           </div>
           
-          <div class="col col-12 col-md-3 d-flex flex-column gap-3 my-3">     
+          <div class="col col-12 col-md-3">     
 
             @if ($issue->pubblication_number !== 0)              
-            <div class="d-flex flex-column flex-wrap gap-2">
+            <div class="d-flex flex-column flex-wrap gap-2 align-items-start my-3">
               <div class="text-muted">Cup Stories vol. {{ $issue->pubblication_number }}</div>
               <div>Status: <span class="fw-bold">{{ $issue->status }}</span></div>
               <div class="text-muted">Published at {{ $issue->published_at }}</div>
             </div>
+            @endif
             
-            <!-- <div class="issue_detail_btn_container d-flex flex-wrap gap-3"> -->
-
+            <div class="d-flex flex-wrap gap-4 align-items-start my-3">
+              @if ($issue->pubblication_number !== 0)              
               <form action="{{ route('admin.issues.updateStatus', $issue) }}" method="POST">
                 @csrf
                 @method('PATCH')
                 <input type="hidden" name="status" value="{{ $issue->status === 'draft' ? 'published' : 'draft' }}">
-                <button  type="submit" class="form-control issue_detail_publish_btn  btn btn-info">
-                  {{ $issue->status === 'draft' ? 'publish' : 'unpublish' }}
+                <button  
+                type="submit" 
+                  class="form-control issue_publish_unpublish_btn btn btn-outline-info text-dark"
+                  title="{{ $issue->status === 'draft' ? 'publish' : 'unpublish' }}"
+                  aria-label="{{ $issue->status === 'draft' ? 'publish' : 'unpublish' }}">
+                  {!! $issue->status === 'draft' ? 'publish <i class="bi bi-box-arrow-up-right"></i>' : '<i class="bi bi-box-arrow-in-down-left"></i> unpublish' !!}
                 </button>
               </form>
+              @endif
 
-
+              <div><x-edit_button :route="route('admin.issues.edit', $issue)"></x-edit_button></div>
               
-            <!-- </div> -->
-          
-            @endif
-
-            <div><a href="{{ route('admin.issues.edit', $issue) }}" class="btn btn-warning">edit</a></div>
+              @if ($issue->pubblication_number !== 0)              
+              <div><x-delete_button :entity="$issue" entityType="issue"/></div>
+              @endif
+            </div>
             
-            @if ($issue->pubblication_number !== 0)              
-            <div><x-delete_button :entity="$issue" entityType="issue"/></div>
-            @endif
           </div>
-            
-
 
       </div>
     </div>

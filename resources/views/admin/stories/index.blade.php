@@ -9,23 +9,23 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">title</th>
-        <th scope="col">author</th>
-        <th scope="col">issue</th>
-        <th scope="col">tags</th>
-        <th scope="col" colspan="3">actions</th>
+        <th scope="col" class="align-middle">title</th>
+        <th scope="col" class="col d-none d-lg-table-cell align-middle">author</th>
+        <th scope="col" class="text-center align-middle">issue</th>
+        <th scope="col" class="col d-none d-md-table-cell align-middle">tags</th>
+        <th scope="col" colspan="3" class="align-middle">actions</th>
       </tr>
     </thead>
     <tbody>
       @foreach ($stories as $story)
       <tr class="">
-        <td scope="row">{{ $story->title }}</td>
-        <td>{{ $story->author->name . ' ' . $story->author->surname }}</td>
-        <td>{{ $story->issue->pubblication_number !== 0 ? $story->issue->pubblication_number : '' }}</td>
-        <td>{{ $story->tags->implode('name', ', ') }}</td>
-        <td><a href="{{ route('admin.stories.show', $story) }}" class="btn btn-info">show</a></td>
-        <td><a href="{{ route('admin.stories.edit', $story) }}" class="btn btn-warning">edit</a></td>
-        <td><x-delete_button :entity="$story" entityType="story"/></td>
+        <td scope="row" class="align-middle"><h5>{{ $story->title }}</h5></td>
+        <td class="col d-none d-lg-table-cell align-middle">{{ $story->author->name . ' ' . $story->author->surname }}</td>
+        <td class="text-center align-middle">{{ $story->issue->pubblication_number !== 0 ? $story->issue->pubblication_number : '' }}</td>
+        <td class="col d-none d-md-table-cell align-middle">{{ $story->tags->implode('name', ', ') }}</td>
+        <td class="align-middle"><x-show_button :route="route('admin.stories.show', $story)" /></td>
+        <td class="align-middle"><x-edit_button :route="route('admin.stories.edit', $story)"/></td>
+        <td class="align-middle"><x-delete_button :entity="$story" entityType="story"/></td>
       </tr>
       @endforeach
 

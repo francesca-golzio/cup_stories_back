@@ -39,9 +39,9 @@
           </div>          
         </div>
         
-        <div class="col-md-1 d-flex flex-column gap-3 m-3">
-          <div><a href="{{ route('admin.authors.edit', $author) }}" class="btn btn-warning">edit</a></div>
-          <div><x-delete_button :entity="$author" entityType="author"/></div>
+        <div class="col-1">
+          <x-edit_button :route="route('admin.authors.edit', $author)" />
+          <x-delete_button :entity="$author" entityType="author"/>
         </div>
         
         <div class="card-footer rounded">

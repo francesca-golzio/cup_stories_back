@@ -6,22 +6,22 @@
   
   <a href="{{ route('admin.tags.create') }}" class="btn btn-success mb-3">Add a new Tag</a>
 
-  <table class="table table-striped">
+  <table class="table table-striped mx-auto" style="max-width: 650px;">
     <thead>
       <tr>
-        <th scope="col">name</th>
-        <th scope="col">label</th>
-        <th scope="col" colspan="3">actions</th>
+        <th scope="col" class="align-middle">name</th>
+        <th scope="col" class="align-middle">label</th>
+        <th scope="col" colspan="3" class="align-middle">actions</th>
       </tr>
     </thead>
     <tbody>
       @foreach ($tags as $tag)
       <tr class="">
-        <td scope="row">{{ $tag->name }}</td>
-        <td scope="row"><small class="border border-secondary rounded px-1">{{ $tag->label }}</small></td>
-        <td><a href="{{ route('admin.tags.show', $tag) }}" class="btn btn-info">show</a></td>
-        <td><a href="{{ route('admin.tags.edit', $tag) }}" class="btn btn-warning">edit</a></td>
-        <td><x-delete_button :entity="$tag" entityType="tag"/></td>
+        <td scope="row" class="align-middle">{{ $tag->name }}</td>
+        <td class="align-middle"><small class="border border-secondary rounded px-1">{{ $tag->label }}</small></td>
+        <td class="align-middle"><x-show_button :route="route('admin.tags.show', $tag)" /></td>
+        <td class="align-middle"><x-edit_button :route="route('admin.tags.edit', $tag)" /></td>
+        <td class="align-middle"><x-delete_button :entity="$tag" entityType="tag"/></td>
       </tr>
       @endforeach
 

@@ -16,15 +16,15 @@
           : ($entity->name ? $entity->name 
           : ($entity->title ? $entity->title 
           : ($entity->name ?? 'this ' . $entityType))) 
-        }}</b>, you wan't be able to recover it.
+        }}</b>, you won't be able to recover it.
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Abort</button>
+        <button type="button" class="btn btn-outline-dark border-0" data-bs-dismiss="modal">Abort</button>
         <form action="{{ route('admin.' . $tableName .'.destroy', $entity) }}" 
             method="POST" >
           @csrf
           @method('DELETE')
-          <input type="submit" class="btn delete_forever_button" value="Delete forever">
+          <input type="submit" class="btn btn-danger delete_forever_button" value="Delete forever">
         </form>
       </div>
     </div>

@@ -50,9 +50,9 @@
         </div>
         
         <div class="col-sm-3 col-md-2">
-          <div class="d-flex flex-column gap-3 m-3">
-            <div><a href="{{ route('admin.tags.edit', $tag) }}" class="btn btn-warning">edit</a></div>
-            <div><x-delete_button :entity="$tag" entityType="tag"/></div>
+          <div class="mt-3">
+            <x-edit_button :route="route('admin.tags.edit', $tag)" />
+            <x-delete_button :entity="$tag" entityType="tag"/>
           </div>
         </div>
         
