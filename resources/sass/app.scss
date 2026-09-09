@@ -13,6 +13,15 @@ a {
   color: inherit;
 }
 
+.container:has(issue_card) {
+  max-width: 800px;
+}
+
+.issue_detail_img {
+  object-fit: cover;
+  width: 100%;
+}
+
 .issue_detail_publish_btn {
   max-width: max-content;
 }
