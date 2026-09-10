@@ -9,14 +9,30 @@
 
 
 :root {
+  --accent-color: #099cbadd;
+  --issue-color: transparent;
+  --bg-color: #0f1d22;
+
   background-color: #0f1d22;
 
-  --issue-color: transparent;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) var(--bg-color);
+}
+
+input,
+textarea {
+  accent-color: var(--accent-color);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--accent-color);
 }
 
 .transparent {
   background-color: transparent;
 }
+
 
 a {
   text-decoration: none;
@@ -110,7 +126,8 @@ i.bi {
     background-color: aliceblue;
   }
 
-  button, .btn {
+  button,
+  .btn {
     max-width: max-content;
   }
 }

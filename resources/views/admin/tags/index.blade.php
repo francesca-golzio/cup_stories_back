@@ -4,7 +4,7 @@
 
 <div class="table-responsive my-4">
   
-  <a href="{{ route('admin.tags.create') }}" class="btn btn-success mb-3">Add a new Tag</a>
+  <a href="{{ route('admin.tags.create') }}" class="btn btn-outline-success mb-3">Add a new Tag</a>
 
   <table class="table table-striped mx-auto" style="max-width: 650px;">
     <thead>

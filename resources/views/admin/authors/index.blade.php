@@ -4,7 +4,7 @@
 
 <div class="table-responsive my-4">
   
-  <a href="{{ route('admin.authors.create') }}" class="btn btn-success mb-3">Add a new Author</a>
+  <a href="{{ route('admin.authors.create') }}" class="btn btn-outline-success mb-3">Add a new Author</a>
 
   <table class="table table-striped mx-auto" style="max-width: 700px;">
     <thead>

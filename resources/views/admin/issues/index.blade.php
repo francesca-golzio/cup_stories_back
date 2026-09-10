@@ -4,7 +4,7 @@
 
 <div class="table-responsive my-4">
   
-  <a href="{{ route('admin.issues.create') }}" class="btn btn-outline-success mb-3 add_instance_button">Add a new Issue</a>
+  <a href="{{ route('admin.issues.create') }}" class="btn btn-outline-success mb-3 ">Add a new Issue</a>
 
   <table class="table table-striped mx-auto" style="max-width: 1000px;">
     <thead>
@@ -29,7 +29,7 @@
             src="{{ $issue->cover_img }}" 
             alt="{{ $issue->title}}" 
             class="rounded" 
-            style="width: 150px; aspect-ratio: 2/1; object-fit: cover; background-color: {{ $issueColor . '95'}};">
+            style="width: 150px; aspect-ratio: 2/1; object-fit: cover; background-color: {{ $issueColor }};">
           @endif
         </td>
         <td class="align-middle"><h4>{{ $issue->title }}</h4></td>

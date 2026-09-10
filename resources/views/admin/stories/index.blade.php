@@ -4,7 +4,7 @@
 
 <div class="table-responsive my-4">
   
-  <a href="{{ route('admin.stories.create') }}" class="btn btn-success mb-3">Add a Short Story</a>
+  <a href="{{ route('admin.stories.create') }}" class="btn btn-outline-success mb-3">Add a Short Story</a>
 
   <table class="table table-striped">
     <thead>
