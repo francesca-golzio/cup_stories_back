@@ -6,9 +6,9 @@
 
   <div class="container my-2" style="max-width: 800px">
 
-    <div class="issue_card my-3 bg-info py-2 rounded" >
+    <div class="issue_card my-3 bg-info py-1 rounded text-muted" >
       
-      <div class="d-flex flex-wrap bg-light w-100">
+      <div class="d-flex flex-wrap bg-dark w-100">
         
           
           <div class="col-12 col-md-9">
@@ -30,7 +30,7 @@
                 </a>
                 &nbsp;
                 <a href="{{ route('admin.authors.show', $story->author) }}">
-                  <small class="text-muted">
+                  <small>
                     [&nbsp;by {{ $story->author->name . ' ' . $story->author->surname }}&nbsp;]
                   </small>
                 </a>
@@ -42,7 +42,7 @@
               @if ($issue->cover_img)
                <img 
                 src="{{$issue->cover_img}}" 
-                class="img-fluid rounded issue_detail_img" 
+                class="img-fluid rounded issue_detail_img bg-info" 
                 alt="{{ $issue->title}}"/>
               @endif
             </div>
@@ -66,7 +66,7 @@
                 <input type="hidden" name="status" value="{{ $issue->status === 'draft' ? 'published' : 'draft' }}">
                 <button  
                 type="submit" 
-                  class="form-control issue_publish_unpublish_btn btn btn-outline-info text-dark"
+                  class="form-control issue_publish_unpublish_btn btn btn-outline-info"
                   title="{{ $issue->status === 'draft' ? 'publish' : 'unpublish' }}"
                   aria-label="{{ $issue->status === 'draft' ? 'publish' : 'unpublish' }}">
                   {!! $issue->status === 'draft' ? 'publish <i class="bi bi-box-arrow-up-right"></i>' : '<i class="bi bi-box-arrow-in-down-left"></i> unpublish' !!}

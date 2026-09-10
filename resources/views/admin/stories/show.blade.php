@@ -6,14 +6,14 @@
 
 <div class="container my-2" style="max-width: 800px">
 
-    <div class="card story_card bg-info py-2 mb-3" ><!-- style="max-width: 800px;" -->
-      <div class="row bg-light">
+    <div class="card story_card bg-info text-muted py-1 mb-3">
+      <div class="row bg-dark">
         
         <div class="col-md-9">
           <div class="card-body">
             <h4 class="card-title">{{ $story->title }}</h4>
-            <h6 class="card-subtitle text-body-secondary" style="text-align: right;">
-              <small class="text-muted">by</small>
+            <h6 class="card-subtitle" style="text-align: right;">
+              <small>by</small>
               <a href="{{ route('admin.authors.show', $story->author) }}">
                 {{ $story->author->name . ' ' . $story->author->surname }}
               </a>

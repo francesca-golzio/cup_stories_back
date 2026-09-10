@@ -109,11 +109,12 @@ i.bi {
   img {
     background-color: aliceblue;
   }
-  
+
   button, .btn {
     max-width: max-content;
   }
 }
+
 
 
 .container:has(issue_card) {
@@ -123,6 +124,7 @@ i.bi {
 .issue_detail_img {
   object-fit: cover;
   width: 100%;
+  // background-color: aliceblue;
 }
 
 .issue_publish_unpublish_btn {

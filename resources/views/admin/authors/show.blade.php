@@ -6,8 +6,8 @@
 
 <div class="container my-2" style="max-width: 800px">
 
-    <div class="card author_card my-3 bg-info p-2 rounded" >
-      <div class="row bg-light p-3">
+    <div class="card author_card my-3 bg-info p-1 rounded" >
+      <div class="row bg-dark p-3">
 
         @if ($author->photo)
         <div class="col-md-3 author_photo">
