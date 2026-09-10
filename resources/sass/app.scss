@@ -97,6 +97,25 @@ i.bi {
   }
 }
 
+
+.form_custom {
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 650px;
+  margin: 10px auto;
+
+  img {
+    background-color: aliceblue;
+  }
+  
+  button, .btn {
+    max-width: max-content;
+  }
+}
+
+
 .container:has(issue_card) {
   max-width: 800px;
 }

@@ -6,15 +6,15 @@
   
   <h4>Add a new Short Story</h4>
 
-  <form action="{{ route('admin.stories.store') }}" method="POST" enctype="multipart/form-data">
+  <form action="{{ route('admin.stories.store') }}" method="POST" enctype="multipart/form-data" class="row border-success form_custom">
   @csrf
 
-    <div class="form-group my-3 text-bg-success p-2 rounded">
+    <div class="form-group p-2 rounded w-50">
       <label for="title">Title</label>
       <input type="text" class="form-control" name="title" id="title" maxlength="100" required aria-required="true">
     </div>
 
-    <div class="form-group my-3 text-bg-success p-2 rounded">
+    <div class="form-group p-2 rounded w-50">
       <label for="author_id">Author</label>
       <select class="form-select" aria-label="Default select example" name="author_id" id="author_id" required aria-required="true">
         <option value=""></option>
@@ -24,21 +24,21 @@
       </select>
     </div>
  
-    <div class="form-group my-3 text-bg-success p-2 rounded">
+    <div class="form-group p-2 rounded">
       <label for="content">Content</label>
       <textarea class="form-control" name="content" id="content" rows="6"  maxlength="450" required aria-required="true"></textarea>
     </div>
 
-    <div class="form-group my-3 text-bg-success p-2 rounded">
+    <div class="form-group p-2 rounded w-50">
       <label for="cover_img">Cover image</label>
       <input type="file" class="form-control" name="cover_img" id="cover_img" maxlength="260">
     </div>
 
-    <div class="form-group my-3 text-bg-success p-2 rounded">
-      <div class="d-flex gap-5">
-        <label for="tags">Tags</label>
+    <div class="form-group mt-1 p-2 rounded w-50">
+      <label for="tags">Tags</label>
+      <div class="d-flex flex-wrap">
         @foreach ($tags as $tag)
-        <div class="form-check">
+        <div class="form-check mx-2">
           <input 
             class="form-check-input" 
             type="checkbox" 
@@ -53,8 +53,8 @@
       </div>
     </div>
 
-    <div class="form-group my-3">
-      <input type="submit" class="form-control btn btn-success" value="Save">
+    <div class="form-group mt-2">
+      <input type="submit" class="form-control btn btn-outline-success" value="Save">
     </div>
 
   </form>

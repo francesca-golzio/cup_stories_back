@@ -6,26 +6,26 @@
   
   <h4>Update the Author</h4>
 
-  <form action="{{ route('admin.authors.update', $author) }}" method="POST" enctype="multipart/form-data">
+  <form action="{{ route('admin.authors.update', $author) }}" method="POST" enctype="multipart/form-data" class="row border-warning form_custom">
   @csrf
   @method('PUT')
 
-    <div class="form-group my-3 text-bg-warning p-2 rounded">
+    <div class="form-group p-2 rounded w-50">
       <label for="name">Name</label>
       <input type="text" class="form-control" name="name" id="name" value="{{ $author->name }}" maxlength="50" required aria-required="true">
     </div>
     
-    <div class="form-group my-3 text-bg-warning p-2 rounded">
+    <div class="form-group p-2 rounded w-50">
       <label for="surname">Surname</label>
       <input type="text" class="form-control" name="surname" id="surname" value="{{ $author->surname }}" maxlength="50" required aria-required="true">
     </div>
 
-    <div class="form-group my-3 text-bg-warning p-2 rounded">
+    <div class="form-group p-2 rounded">
       <label for="bio">About <small class="text-muted">~ max 450 characters</small></label>
       <textarea type="text" class="form-control" name="bio" id="bio" maxlength="450">{{ $author->bio }}</textarea>
     </div>
 
-    <div class="form-group my-3 text-bg-warning p-2 rounded">
+    <div class="form-group p-2 rounded">
       <label for="photo">Photography</label>
       <input type="file" class="form-control my-2" name="photo" id="photo" value="{{ $author->photo }}" maxlength="260">
       @if ($author->photo)
@@ -36,7 +36,7 @@
     </div>
 
     <div class="form-group my-3">
-      <input type="submit" class="form-control btn btn-warning" value="Save">
+      <input type="submit" class="form-control btn btn-outline-warning" value="Save">
     </div>
 
   </form>
