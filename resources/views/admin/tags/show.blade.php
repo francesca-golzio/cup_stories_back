@@ -15,7 +15,10 @@
 
         <div class="col p-0">
 
-          <h2 class="card-title">{{ $tag->name}}</h2>
+          <div class="d-flex justify-content-between">
+            <h2 class="card-title">{{ $tag->name}}</h2>            
+            <small class="border border-secondary rounded px-1 my-3">{{ $tag->label }}</small>
+          </div>
           
           <h5 class="card-subtitle text-body-secondarymy-2">Short Stories:</h5>
 
