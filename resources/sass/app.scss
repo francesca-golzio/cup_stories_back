@@ -9,32 +9,92 @@
 
 
 :root {
+  background-color: #0f1d22;
+
   --issue-color: transparent;
 }
 
+.transparent {
+  background-color: transparent;
+}
 
 a {
   text-decoration: none;
   color: inherit;
 }
 
-i.bi{
+i.bi {
   font-size: 1.5rem;
 }
 
 .delete_button,
 .edit_button,
-.show_button {
+.show_button,
+.add_instance_button,
+.go_to_list_button,
+.visit_site_button {
   text-align: center;
   line-height: 0;
   padding: 8px;
   border: none;
   max-width: max-content;
+  max-height: max-content;
 }
 
-.add_instance_button {
-  border-width: 2px;
 
+.dashboard_container {
+
+  .panel_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #0f1d22;
+    border-radius: 30px;
+    box-shadow: 1px 0px 7px 1px rgba(255, 255, 255, 0.2);
+
+    .dot {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      margin: 3%;
+      box-shadow: 1px 0px 10px 1px rgba(13, 202, 240, 0.2);
+
+      h3 {
+        text-align: center;
+        position: absolute;
+        top: 25%;
+        width: 90%;
+      }
+
+      .go_to_list_button,
+      .visit_site_button {
+        transform: scale(1.5);
+        border-radius: 50%;
+        position: absolute;
+        bottom: 20%;
+        right: 20%;
+
+      }
+
+      .dashboard_add_btn {
+        // transform: scale(1.2);
+        border-radius: 50%;
+        position: absolute;
+        bottom: 30%;
+        left: 15%;
+      }
+
+      .visit_site_button_label {
+        line-height: 0.75rem;
+        position: absolute;
+        bottom: 30%;
+        left: 15%;
+        width: 50px;
+      }
+    }
+  }
 }
 
 .container:has(issue_card) {
