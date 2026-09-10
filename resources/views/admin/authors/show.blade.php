@@ -18,7 +18,9 @@
         <div class="col">
           <h2 class="card-title">{{ $author->name . ' ' . $author->surname }}</h2>
           <div>
-            <h5 class="card-subtitle text-body-secondary my-3">Short Stories:</h5>      
+            <h5 class="card-subtitle text-body-secondary my-3">Short Stories:</h5>    
+            
+            @if (!$author->stories->isEmpty())
             <ul>
               @foreach ($author->stories as $story)                   
                 <li>
@@ -35,7 +37,11 @@
                   </div>
                 </li>
               @endforeach
-            </ul>            
+            </ul>     
+            @else
+            <p class="text-muted">- none (yet) -</p>
+            @endif
+
           </div>          
         </div>
         

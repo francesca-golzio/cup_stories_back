@@ -47,7 +47,7 @@
             </ul>
 
           @else
-            <div class="text-muted">none</div>
+            <div class="text-muted">- none (yet) -</div>
           @endif
 
           <div class="card-footer rounded mt-3">
