@@ -19,7 +19,7 @@ class StoriesTableSeeder extends Seeder
     {
         $sampleImages = Storage::disk('public')->files('seeders/sampleimages');
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 50; $i++) {
 
             $newStory = new Story();
 
@@ -30,28 +30,59 @@ class StoriesTableSeeder extends Seeder
             $newStory->cover_img =  "http://localhost:8000/storage/" . $sampleImages[array_rand($sampleImages)];
 
 
-            /* assign some stories to the sample published issue */
-            if($i % 3 == 0) {
+            /* assign stories to issues */
+            if($i <= 8) {
                 $newStory->issue_id = 2;
-            }
 
-            $newStory->save();
+            } elseif ($i > 8 && $i <= 16) {
+                $newStory->issue_id = 3;
+
+            } elseif ($i > 16 && $i <= 24) {
+                $newStory->issue_id = 4;
+
+            } elseif ($i > 24 && $i <= 32) {
+                $newStory->issue_id = 5;
+
+            } elseif ($i > 32 && $i <= 40) {
+                $newStory->issue_id = 6;
+
+            } else {
+                $newStory->issue_id = 1;
+            }
             
-            /* assign some sample tags to some sample stories */
+            $newStory->save();
+
+            /* assign tags to stories */
             $sortedIds = [];
+            $sortedTags = Tag::all()->random(random_int(1, 3), true);
 
-            if($i % 4 == 0) {
-                $sortedTags = Tag::all()->random(random_int(1, 3), true);
-
-                foreach ($sortedTags as $tag) {
-
-                    $sortedIds[] = $tag->id;
-                }
-                
-                //dd($sortedTags, $sortedIds);
-
-                $newStory->tags()->attach($sortedIds);
+            foreach ($sortedTags as $tag) {
+                $sortedIds[] = $tag->id;
             }
+            
+            $newStory->tags()->attach($sortedIds);
+
+
+            // /* assign some stories to the sample published issue */
+            // if($i % 3 == 0) {
+            //     $newStory->issue_id = 2;
+            // }
+            
+            // /* assign some sample tags to some sample stories */
+            // $sortedIds = [];
+
+            // if($i % 4 == 0) {
+            //     $sortedTags = Tag::all()->random(random_int(1, 3), true);
+
+            //     foreach ($sortedTags as $tag) {
+
+            //         $sortedIds[] = $tag->id;
+            //     }
+                
+            //     //dd($sortedTags, $sortedIds);
+
+            //     $newStory->tags()->attach($sortedIds);
+            // }
         }
     }    
 }

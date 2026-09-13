@@ -40,7 +40,7 @@ return [
         "label" => "Family",
         "description" => "Stories centered on family bonds and dynamics, exploring relationships between parents, children, and siblings as they navigate love, conflict, and belonging together."
     ],
-    /* [
+    [
         "name" => "Horror",
         "label" => "Horror",
         "description" => "Tales designed to evoke fear, terror, or unease in the reader, often through supernatural elements, psychological threats, or situations of extreme danger."
@@ -79,5 +79,5 @@ return [
         "name" => "Childhood",
         "label" => "Childhood",
         "description" => "Stories told through the eyes of children or centered on the experiences of growing up, capturing wonder, innocence, and the formative moments of early life."
-    ], */
+    ],
 ];
