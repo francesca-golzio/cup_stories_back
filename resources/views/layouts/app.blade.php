@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="app_layout">
 
 
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
