@@ -19,7 +19,7 @@
         }}</b>, you won't be able to recover it.
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark border-0" data-bs-dismiss="modal">Abort</button>
+        <button type="button" class="btn btn-outline-light border-0" data-bs-dismiss="modal">Abort</button>
         <form action="{{ route('admin.' . $tableName .'.destroy', $entity) }}" 
             method="POST" >
           @csrf
