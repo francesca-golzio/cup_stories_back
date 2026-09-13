@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 route::get('stories', [StoryController::class, 'index']);
+route::get('stories/random', [StoryController::class, 'random']);
 route::get('stories/{story:slug}', [StoryController::class, 'show']);
 
 route::get('issues', [IssueController::class, 'index']);

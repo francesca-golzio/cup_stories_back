@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Story;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class StoryController extends Controller
 {
+    /* get the published STORIES LIST */
     public function index(Request $request) {
         
        $query = Story::with('author', 'issue', 'tags')
@@ -30,7 +32,39 @@ class StoryController extends Controller
             ]
         );
     }
-                    
+
+    
+    /* get a RANDOM published STORY (pass only the cover_img and the incipit for preview and the slug for building the link) */
+   public function random() {
+
+       $story = Story::query()
+       ->select(['cover_img', 'slug', 'content'])
+       ->whereHas('issue', fn ($query) => 
+           $query->where('status', 'published')
+       )
+       ->inRandomOrder()
+       ->first();
+
+        if (!$story) {
+
+            return response()->json([
+                'success' => false,
+                'message' => 'No story found',
+            ], 404);            
+        }
+
+        return response()->json([
+            'success' => true,
+            'results' => [
+                'cover_img' => $story->cover_img,
+                'slug' => $story->slug,
+                'incipit' => Str::of(strip_tags($story->content))->substr(0, 200) . '...',
+            ]
+        ]);
+       
+   }
+
+    /* get the STORY DETAIL */
     public function show(Story $story) {
                         
         if ($story->issue_id != 1 && $story->issue->status == 'published') {
