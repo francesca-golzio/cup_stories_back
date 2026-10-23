@@ -37,7 +37,11 @@
         <td class="col-1 align-middle">{{ $issue->pubblication_number}}</td>
         <td class="align-middle"><x-show_button :route="route('admin.issues.show', $issue)" /></td>
         <td class="d-none d-lg-table-cell align-middle"><x-edit_button :route="route('admin.issues.edit', $issue)" /></td>
-        <td class="d-none d-lg-table-cell align-middle"><x-delete_button :entity="$issue" entityType="issue"/></td>
+        <td class="d-none d-lg-table-cell align-middle">
+          @if ($issue->pubblication_number != 0)
+          <x-delete_button :entity="$issue" entityType="issue"/>
+          @endif
+        </td>
       </tr>
       @endforeach
 
@@ -47,7 +51,9 @@
 
 <!-- Modal -->
 @foreach ($issues as $issue)
-<x-delete_button_modal :entity="$issue" entityType="issue" tableName="issues" />
+  @if ($issue->pubblication_number != 0)
+  <x-delete_button_modal :entity="$issue" entityType="issue" tableName="issues" />
+  @endif
 @endforeach
 
 @endsection

@@ -66,11 +66,14 @@
         @endif
       </div>
 
+      @if ($issue->pubblication_number != 0)
+      
       <span>or</span>
-
+      
       <div class="form-group my-3">
         <button type="submit" class="form-control btn btn-outline-warning" name="set_status" value="publish">Publish the updated Issue</button>
       </div> 
+      @endif
 
     </div>    
   </form>   

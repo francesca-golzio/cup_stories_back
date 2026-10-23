@@ -102,32 +102,37 @@ class IssueController extends Controller
         }
         
         /* set $issue->status */
-        if ($data['set_status'] == 'save_draft') {
+        if ($issue?->pubblication_number == 0) {
             $issue->status = 'draft';
-            
-            } else if ($data['set_status'] == 'unpublish') {
+
+        } else {
+
+            if ($data['set_status'] == 'save_draft') {
                 $issue->status = 'draft';
-
-                /* set $issue->published_at */
-                $issue->published_at = null;
                 
-                } else {
-                    $issue->status = 'published';
+                } else if ($data['set_status'] == 'unpublish') {
+                    $issue->status = 'draft';
+
+                    /* set $issue->published_at */
+                    $issue->published_at = null;
                     
-            /* set $issue->published_at */
-            if (!$issue->published_at) {
-                $issue->published_at = now();
-            }
+                    } else {
+                        $issue->status = 'published';
+                        
+                /* set $issue->published_at */
+                if (!$issue->published_at) {
+                    $issue->published_at = now();
+                }
 
-            /* set $issue->pubblication_number */
-            if (!$issue->pubblication_number) {
+                /* set $issue->pubblication_number */
+                if (!$issue->pubblication_number) {
 
-                $lastIssue = Issue::orderBy('pubblication_number', 'desc')->first();
+                    $lastIssue = Issue::orderBy('pubblication_number', 'desc')->first();
 
-                $issue->pubblication_number = $lastIssue->pubblication_number + 1;
+                    $issue->pubblication_number = $lastIssue->pubblication_number + 1;
+                }
             }
         }
-
         //dd($issue);
 
         $issue->update();
@@ -148,9 +153,14 @@ class IssueController extends Controller
 
         //dd($request->status);
 
-        $issue->update(['status' => $request->status]);
+        if($issue?->pubblication_number == 0) {
+            return back()->with('error', 'Operation not allowed');
 
-        return back()->with('success', 'Status updated successfully');
+        } else {
+            $issue->update(['status' => $request->status]);
+
+            return back()->with('success', 'Status updated successfully');
+        }
     }
 
     /**
@@ -158,12 +168,17 @@ class IssueController extends Controller
      */
     public function destroy(Issue $issue)
     {
-        if($issue->cover_img) {
-            Storage::delete($issue->cover_img);
-        }
-    
-        $issue->delete();
+        if ($issue?->pubblication_number == 0) {
+            return redirect()->route('admin.issues.show', $issue);
 
-        return redirect()->route('admin.issues.index');
+        } else {
+            if($issue->cover_img) {
+                Storage::delete($issue->cover_img);
+            }
+        
+            $issue->delete();
+
+            return redirect()->route('admin.issues.index');
+        }
     }
 }
