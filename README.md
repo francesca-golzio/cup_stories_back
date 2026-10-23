@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="./public/icon-logo-filled.png" alt="Cup Stories logo: an open book shaped like a teacup" width="140">
+</div>
+
 # Cup Stories
 ## Small Reading Treats
 repositories: [cup_stories_back](https://github.com/francesca-golzio/cup_stories_back.git) & [cup_stories_front](https://github.com/francesca-golzio/cup_stories_front.git)
@@ -104,7 +108,7 @@ npm run dev
 The admin area is accessible only to authenticated (verified) users.
 A successful login will redirect the User to the admin area.
 
-![admin dashboard](public/screenshots/dashboard.webp)
+![admin dashboard](./public/screenshots/dashboard.webp)
 
 The admin area allows the authenticated User to manage stories, authors, issues and tags (see CRUD below), but also his/her own profile.
 
@@ -141,11 +145,11 @@ All entities have the following CRUD methods:
 
 <table>
   <tr>
-    <td colspan="5"><img src="public/screenshots/stories_index.webp" alt="index view for stories, with CRUD buttons" style="width: 100%; object-fit: cover;"></td>
+    <td colspan="5"><img src="./public/screenshots/stories_index.webp" alt="index view for stories, with CRUD buttons" style="width: 100%; object-fit: cover;"></td>
   </tr>
   <tr>
     <td colspan="5">
-      <img src="public/screenshots/author_edit_form.webp" alt="author edit form" style="width: 100%; object-fit: cover;">
+      <img src="./public/screenshots/author_edit_form.webp" alt="author edit form" style="width: 100%; object-fit: cover;">
     </td>
   </tr>
   <tr>
@@ -153,10 +157,10 @@ All entities have the following CRUD methods:
       <p>In addiction, the Issue entities have a patch method to be published or returned to draft status when needed.</p>
     </td>
     <td colspan="2">
-      <img src="public/screenshots/publish.webp" alt="issues publish button" style="width: 100%; object-fit: cover;">
+      <img src="./public/screenshots/publish.webp" alt="issues publish button" style="width: 100%; object-fit: cover;">
     </td>
     <td colspan="2">
-      <img src="public/screenshots/unpublish.webp" alt="issues unpublish button" style="width: 100%; object-fit: cover;">
+      <img src="./public/screenshots/unpublish.webp" alt="issues unpublish button" style="width: 100%; object-fit: cover;">
     </td>
   </tr>
 </table>
