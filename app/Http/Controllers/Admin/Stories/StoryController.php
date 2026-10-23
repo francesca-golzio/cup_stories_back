@@ -51,7 +51,7 @@ class StoryController extends Controller
 
         if (array_key_exists('cover_img', $data)) {
             $img_url = Storage::putFile('stories', $data['cover_img']);
-            $newStory->cover_img = "http://localhost:8000/storage/" . $img_url;
+            $newStory->cover_img = env('APP_URL') . "/" . "storage/" . $img_url;
         }
 
         //dd($newStory);
@@ -104,7 +104,7 @@ class StoryController extends Controller
                 Storage::delete($story->cover_img);
             }
             $img_url = Storage::putFile('stories', $data['cover_img']);
-            $story->cover_img = "http://localhost:8000/storage/" . $img_url;
+            $story->cover_img = env('APP_URL') . "/" . "storage/" . $img_url;
         }
 
         //dd($story);

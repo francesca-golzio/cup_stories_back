@@ -29,7 +29,7 @@ class AuthorsTableSeeder extends Seeder
             $newAuthor->bio = $faker->text(450);
             $newAuthor->slug = Str::slug($newAuthor->name . ' ' . $newAuthor->surname, '-') ;
 
-            $newAuthor->photo =  "http://localhost:8000/storage/" . $sampleProfilePics[$x];
+            $newAuthor->photo =  env('APP_URL') . "/" . "storage/" . $sampleProfilePics[$x];
             $x++;
 
             $newAuthor->save();

@@ -27,7 +27,7 @@ class StoriesTableSeeder extends Seeder
             $newStory->content = $faker->paragraphs(12, true);
             $newStory->slug = Str::slug($newStory->title, '-');
             $newStory->author_id = rand(1, 7);
-            $newStory->cover_img =  "http://localhost:8000/storage/" . $sampleImages[array_rand($sampleImages)];
+            $newStory->cover_img = env('APP_URL') . "/" . "storage/" . $sampleImages[array_rand($sampleImages)];
 
 
             /* assign stories to issues */

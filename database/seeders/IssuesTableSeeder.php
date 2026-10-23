@@ -31,8 +31,7 @@ class IssuesTableSeeder extends Seeder
         $newIssue->pubblication_number = 0;
         $newIssue->slug = Str::slug( $newIssue->pubblication_number . ' ' . $newIssue->title); 
         $newIssue->published_at = now();
-        $newIssue->cover_img = "http://localhost:8000/storage/" . $sampleImages[0];
-        // $newIssue->cover_img = "http://localhost:8000/storage/" . $sampleImages[array_rand($sampleImages)];
+        $newIssue->cover_img = env('APP_URL') . "/" . "storage/" . $sampleImages[0];
 
         $newIssue->save();
         
@@ -46,8 +45,7 @@ class IssuesTableSeeder extends Seeder
             $newIssue->color = $sampleColors[$x];
                 $x++;
                 
-            $newIssue->cover_img = "http://localhost:8000/storage/" . $sampleImages[$i];
-            // $newIssue->cover_img = "http://localhost:8000/storage/" . $sampleImages[array_rand($sampleImages)];
+            $newIssue->cover_img = env('APP_URL') . "/" . "storage/" . $sampleImages[$i];
             
             /* pubblica la prima issue */
             if ($i >= 1 && $i <= 5) {
